@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Julia Schirrmeister — graphic designer and artist with an MFA in Communication Design from Pratt Institute, based in New York City.">
+  <title>About — Julia Schirrmeister</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    (function(){var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(t===null&&d))document.documentElement.setAttribute('data-theme','dark');})();
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <div class="container nav-inner">
+        <a href="index.html" class="nav-brand" aria-label="Julia Schirrmeister — Home">
+          Julia Schirrmeister
+        </a>
+        <div class="nav-right">
+          <ul class="nav-links" id="nav-links" role="list">
+            <li class="nav-dropdown" role="none">
+              <button class="nav-dropdown-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="works-dropdown">
+                Works
+                <svg class="dropdown-chevron" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <ul class="nav-dropdown-menu" id="works-dropdown" role="listbox" data-open="false">
+                <li role="none"><a href="projects/patient-portal.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">01</span>Patient Portal</a></li>
+                <li role="none"><a href="projects/sva-film-logo.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">02</span>SVA Film Logo</a></li>
+                <li role="none"><a href="projects/thesis-book.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">03</span>Thesis Book</a></li>
+                <li role="none"><a href="projects/capstone-zine.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">04</span>Capstone Zine</a></li>
+                <li role="none"><a href="projects/poster-series.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">05</span>Poster Series</a></li>
+              </ul>
+            </li>
+            <li role="none"><a href="about.html" class="nav-link active" aria-current="page">About</a></li>
+            <li role="none"><a href="art.html" class="nav-link">Art</a></li>
+          </ul>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode" title="Toggle dark mode">
+            <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===================== MAIN ===================== -->
+  <main id="main-content" class="page-content">
+
+    <!-- ABOUT HERO -->
+    <section class="about-hero" aria-labelledby="about-heading">
+      <div class="container">
+        <p class="eyebrow about-hero-eyebrow">About</p>
+        <h1 class="about-hero-title" id="about-heading">
+          Hello,<br>I'm <em>Julia.</em>
+        </h1>
+      </div>
+    </section>
+
+    <!-- ABOUT GRID: image + bio -->
+    <section aria-labelledby="about-bio-heading">
+      <div class="container">
+        <div class="about-grid">
+
+          <!-- Left: Portrait image -->
+          <div class="about-img-wrap">
+            <figure class="about-img" aria-label="Portrait of Julia Schirrmeister">
+              <!-- Replace with: <img src="images/julia-portrait.jpg" alt="Julia Schirrmeister, graphic designer and artist"> -->
+              <div class="img-placeholder" style="background: rgba(0,71,255,0.04); height:100%;">
+                Add Portrait Photo
+              </div>
+            </figure>
+          </div>
+
+          <!-- Right: Bio -->
+          <div class="about-content">
+            <h2 id="about-bio-heading">Julia Schirrmeister</h2>
+            <p class="eyebrow">Graphic Designer &amp; Artist · New York City</p>
+
+            <p>
+              <strong>I'm a graphic designer and artist with an MFA in Communication Design from Pratt Institute.</strong> My practice is rooted in research-driven thinking, disciplined craft, and a belief that good design asks questions before it answers them. I work across UX design, brand identity, editorial, and print — always with a commitment to clarity and intention.
+            </p>
+            <p>
+              My background in <strong>scholarly research and writing</strong> deeply shapes the way I approach design problems. Before arriving at a visual solution, I invest in understanding the context, the audience, and the underlying ideas at stake. This means the work I produce is never arbitrary — every typographic choice, every grid decision, every color carries purpose.
+            </p>
+            <p>
+              I'm currently seeking <strong>full-time opportunities in New York City</strong> in graphic design or UX, particularly at organizations doing work at the intersection of culture, communication, and people. I'm energized by collaborative environments where rigor and curiosity are valued equally. When I'm not designing, I'm making art — drawing, painting, and exploring the edges between image and language.
+            </p>
+
+            <hr class="about-divider" aria-hidden="true">
+
+            <p class="skills-label">Skills &amp; Tools</p>
+            <ul class="skills-grid" aria-label="Skills and tools">
+              <li class="skill-item">UX / UI Design</li>
+              <li class="skill-item">Brand Identity</li>
+              <li class="skill-item">Editorial Design</li>
+              <li class="skill-item">Print Production</li>
+              <li class="skill-item">Typography</li>
+              <li class="skill-item">Design Systems</li>
+              <li class="skill-item">Figma</li>
+              <li class="skill-item">Adobe InDesign</li>
+              <li class="skill-item">Adobe Illustrator</li>
+              <li class="skill-item">Adobe Photoshop</li>
+              <li class="skill-item">Research &amp; Writing</li>
+              <li class="skill-item">Prototyping</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-cta">
+        <div>
+          <p class="eyebrow mb-3">Available for Work</p>
+          <h2 class="footer-headline">Let's work<br>together.</h2>
+          <p class="footer-sub">Open to full-time graphic design and UX roles in New York City. Let's create something meaningful.</p>
+          <a href="mailto:hello@juliaschirrmeister.com" class="btn btn-primary">
+            Get in Touch
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <nav class="footer-contact" aria-label="Contact and social links">
+          <a href="https://linkedin.com/in/julia-schirrmeister" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://instagram.com/juliaschirrmeister" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile (opens in new tab)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Instagram
+          </a>
+          <a href="mailto:hello@juliaschirrmeister.com" class="contact-link" aria-label="Send an email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            hello@juliaschirrmeister.com
+          </a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© 2024 Julia Schirrmeister</span>
+        <span>Designed &amp; built by Julia Schirrmeister</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

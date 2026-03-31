@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Portfolio (Python HTTP Server)",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-I", "-c", "import http.server,socketserver,os,functools; D='/tmp/portfolio'; H=functools.partial(http.server.SimpleHTTPRequestHandler,directory=D); port=int(os.environ.get('PORT',8080)); socketserver.TCPServer(('',port),H).serve_forever()"],
+      "port": 8080,
+      "autoPort": true
+    },
+    {
+      "name": "Portfolio (npx serve)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3000", "."],
+      "port": 3000
+    }
+  ]
+}

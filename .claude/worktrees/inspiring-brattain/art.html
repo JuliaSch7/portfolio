@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Art by Julia Schirrmeister — illustrations, paintings, experimental typography, and studio practice.">
+  <title>Art — Julia Schirrmeister</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    (function(){var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(t===null&&d))document.documentElement.setAttribute('data-theme','dark');})();
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <div class="container nav-inner">
+        <a href="index.html" class="nav-brand" aria-label="Julia Schirrmeister — Home">Julia Schirrmeister</a>
+        <div class="nav-right">
+          <ul class="nav-links" id="nav-links" role="list">
+            <li class="nav-dropdown" role="none">
+              <button class="nav-dropdown-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="works-dropdown">
+                Works
+                <svg class="dropdown-chevron" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <ul class="nav-dropdown-menu" id="works-dropdown" role="listbox" data-open="false">
+                <li role="none"><a href="projects/patient-portal.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">01</span>Patient Portal</a></li>
+                <li role="none"><a href="projects/sva-film-logo.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">02</span>SVA Film Logo</a></li>
+                <li role="none"><a href="projects/thesis-book.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">03</span>Thesis Book</a></li>
+                <li role="none"><a href="projects/capstone-zine.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">04</span>Capstone Zine</a></li>
+                <li role="none"><a href="projects/poster-series.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">05</span>Poster Series</a></li>
+              </ul>
+            </li>
+            <li role="none"><a href="about.html" class="nav-link">About</a></li>
+            <li role="none"><a href="art.html" class="nav-link active" aria-current="page">Art</a></li>
+          </ul>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode" title="Toggle dark mode">
+            <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===================== MAIN ===================== -->
+  <main id="main-content" class="page-content">
+
+    <!-- ART HERO -->
+    <section class="art-hero" aria-labelledby="art-heading">
+      <div class="container">
+        <p class="eyebrow" style="margin-bottom:1.5rem;">Art &amp; Studio Practice</p>
+        <h1 class="art-hero-title" id="art-heading">Art</h1>
+        <p class="art-hero-sub">
+          Illustrations, paintings, experimental typography, and studio explorations. Work made outside the brief — for the love of image-making.
+        </p>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section aria-label="Art gallery">
+      <div class="container">
+        <div class="gallery-grid">
+
+          <!-- Item 1 -->
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-tall" aria-label="Study in Blue — view larger">
+              <!-- Replace with: <img src="images/art/study-in-blue.jpg" alt="Study in Blue, digital illustration"> -->
+              <div class="img-placeholder" style="height:100%;">Add Image</div>
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Study in Blue</p>
+              <p class="gallery-caption-desc">Digital illustration, 2024. Exploring color and form through layered geometric shapes.</p>
+            </div>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Quiet Geometry — view larger">
+              <div class="img-placeholder" style="height:100%;">Add Image</div>
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Quiet Geometry</p>
+              <p class="gallery-caption-desc">Screen print on paper, 2023. Abstract series investigating pattern and negative space.</p>
+            </div>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-xwide" aria-label="Type as Image — view larger">
+              <div class="img-placeholder" style="height:100%;">Add Image</div>
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Type as Image</p>
+              <p class="gallery-caption-desc">Experimental lettering, 2024. When typography stops being readable and starts being felt.</p>
+            </div>
+          </article>
+
+          <!-- Item 4 -->
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-port" aria-label="Urban Marks — view larger">
+              <div class="img-placeholder" style="height:100%;">Add Image</div>
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Urban Marks</p>
+              <p class="gallery-caption-desc">Photography, New York City, 2023. Finding accidental compositions in the everyday city.</p>
+            </div>
+          </article>
+
+          <!-- Item 5 -->
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Signal / Noise — view larger">
+              <div class="img-placeholder" style="height:100%;">Add Image</div>
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Signal / Noise</p>
+              <p class="gallery-caption-desc">Mixed media collage, 2024. Cut paper, ink, and found imagery.</p>
+            </div>
+          </article>
+
+          <!-- Item 6 -->
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-tall" aria-label="Botanical Study No. 3 — view larger">
+              <div class="img-placeholder" style="height:100%;">Add Image</div>
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Botanical Study No. 3</p>
+              <p class="gallery-caption-desc">Ink on paper, 2023. Slow observation as drawing practice.</p>
+            </div>
+          </article>
+
+          <!-- Item 7 -->
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-wide" aria-label="Chromatic Scale — view larger">
+              <div class="img-placeholder" style="height:100%;">Add Image</div>
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Chromatic Scale</p>
+              <p class="gallery-caption-desc">Color studies on paper, 2024. A systematic exploration of hue relationships.</p>
+            </div>
+          </article>
+
+          <!-- Item 8 -->
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Words Without Letters — view larger">
+              <div class="img-placeholder" style="height:100%;">Add Image</div>
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Words Without Letters</p>
+              <p class="gallery-caption-desc">Experimental lettering, 2023. Legibility as a spectrum, not a binary.</p>
+            </div>
+          </article>
+
+          <!-- Item 9 -->
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-port" aria-label="Night Architecture — view larger">
+              <div class="img-placeholder" style="height:100%;">Add Image</div>
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Night Architecture</p>
+              <p class="gallery-caption-desc">Photography, 2023. Buildings as abstract forms after dark.</p>
+            </div>
+          </article>
+
+          <!-- Item 10 -->
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-wide" aria-label="Surface Tension — view larger">
+              <div class="img-placeholder" style="height:100%;">Add Image</div>
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Surface Tension</p>
+              <p class="gallery-caption-desc">Acrylic on canvas, 2024. Painted studies in texture and materiality.</p>
+            </div>
+          </article>
+
+          <!-- Item 11 -->
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-tall" aria-label="Form Follows — view larger">
+              <div class="img-placeholder" style="height:100%;">Add Image</div>
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Form Follows</p>
+              <p class="gallery-caption-desc">Sculpture documentation, 2023. Paper folding as spatial thinking.</p>
+            </div>
+          </article>
+
+          <!-- Item 12 -->
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-xwide" aria-label="Process Documentation — view larger">
+              <div class="img-placeholder" style="height:100%;">Add Image</div>
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Process Documentation</p>
+              <p class="gallery-caption-desc">Studio notes and sketches, ongoing. The work before the work.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-cta">
+        <div>
+          <p class="eyebrow mb-3">Available for Work</p>
+          <h2 class="footer-headline">Let's work<br>together.</h2>
+          <p class="footer-sub">Open to full-time graphic design and UX roles in New York City. Let's create something meaningful.</p>
+          <a href="mailto:hello@juliaschirrmeister.com" class="btn btn-primary">
+            Get in Touch
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <nav class="footer-contact" aria-label="Contact and social links">
+          <a href="https://linkedin.com/in/julia-schirrmeister" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://instagram.com/juliaschirrmeister" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile (opens in new tab)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Instagram
+          </a>
+          <a href="mailto:hello@juliaschirrmeister.com" class="contact-link" aria-label="Send an email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            hello@juliaschirrmeister.com
+          </a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© 2024 Julia Schirrmeister</span>
+        <span>Designed &amp; built by Julia Schirrmeister</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

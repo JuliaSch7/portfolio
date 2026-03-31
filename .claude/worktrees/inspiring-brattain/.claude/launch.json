@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Portfolio (Python HTTP Server)",
+      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeArgs": ["-c", "import sys; sys.path=[p for p in sys.path if p]; import os; os.chdir('/Users/juliaschirrmeister/Documents/Claude Portfolio/.claude/worktrees/inspiring-brattain'); port=int(os.environ.get('PORT',8000)); from http.server import HTTPServer,SimpleHTTPRequestHandler; httpd=HTTPServer(('',port),SimpleHTTPRequestHandler); print(f'Serving on http://localhost:{port}',flush=True); httpd.serve_forever()"],
+      "port": 8080,
+      "autoPort": true
+    },
+    {
+      "name": "Portfolio (npx serve)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3000", "."],
+      "port": 3000
+    }
+  ]
+}
