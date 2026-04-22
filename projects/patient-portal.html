@@ -125,13 +125,14 @@
         <!-- Wireframe sticky-left / scroll-right layout -->
         <style>
           .wf-scroll-wrapper { position: relative; padding: 0.5rem 0 2rem; }
-          .wf-scroll-inner { display: flex; align-items: flex-start; gap: 4rem; }
+          .wf-scroll-inner { display: flex; align-items: flex-start; gap: 3rem; }
 
           /* LEFT: sticky text column */
           .wf-sticky-text {
-            flex: 0 0 260px;
+            flex: 1;
             position: sticky;
             top: 18vh;
+            min-width: 0;
           }
           .wf-section-num {
             font-size: 0.72rem;
