@@ -122,29 +122,133 @@
 
       <!-- 03 WIREFRAMES -->
       <section class="case-section" aria-labelledby="cs-03">
-        <div class="case-section-label">
-          <span class="case-section-num">03</span>
-          <h2 class="case-section-title" id="cs-03">Wireframes</h2>
+        <!-- Wireframe sticky-left / scroll-right layout -->
+        <style>
+          .wf-scroll-wrapper { position: relative; padding: 0.5rem 0 2rem; }
+          .wf-scroll-inner { display: flex; align-items: flex-start; gap: 4rem; }
+
+          /* LEFT: sticky text column */
+          .wf-sticky-text {
+            flex: 0 0 260px;
+            position: sticky;
+            top: 18vh;
+          }
+          .wf-section-num {
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0.4;
+            display: block;
+            margin-bottom: 0.6rem;
+          }
+          .wf-section-title {
+            font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 0 0 1.75rem;
+          }
+          .wf-level {
+            display: none;
+            animation: wf-fadein 0.4s ease;
+          }
+          .wf-level.is-active { display: block; }
+          @keyframes wf-fadein {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+          }
+          .wf-level-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.45;
+            display: block;
+            margin-bottom: 0.5rem;
+          }
+          .wf-level-desc {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            opacity: 0.7;
+            margin: 0;
+          }
+
+          /* RIGHT: scrolling images column */
+          .wf-scroll-images { flex: 1; min-width: 0; }
+          .wf-img-block {
+            margin-bottom: 2.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+          }
+          .wf-img-block:last-child { margin-bottom: 0; }
+          .wf-img-block img { width: 100%; height: auto; display: block; }
+
+          /* Mobile: stack */
+          @media (max-width: 680px) {
+            .wf-scroll-inner { flex-direction: column; gap: 1.5rem; }
+            .wf-sticky-text { position: relative; top: auto; flex: none; width: 100%; }
+            .wf-level { display: block !important; margin-bottom: 1rem; }
+          }
+        </style>
+
+        <div class="wf-scroll-wrapper">
+          <div class="wf-scroll-inner">
+
+            <!-- LEFT: sticky text -->
+            <div class="wf-sticky-text">
+              <span class="wf-section-num">03 — Process</span>
+              <h2 class="wf-section-title" id="cs-03">Wireframes</h2>
+
+              <div class="wf-level is-active" data-wf="0">
+                <span class="wf-level-label">Low Fidelity</span>
+                <p class="wf-level-desc">Early sketch exploring the clinic's homepage layout and content hierarchy.</p>
+              </div>
+              <div class="wf-level" data-wf="1">
+                <span class="wf-level-label">Mid Fidelity</span>
+                <p class="wf-level-desc">Wireframe of the clinic website homepage, sign-up page, and patient portal dashboard.</p>
+              </div>
+              <div class="wf-level" data-wf="2">
+                <span class="wf-level-label">High Fidelity</span>
+                <p class="wf-level-desc">Wireframe of the patient clinic website homepage.</p>
+              </div>
+            </div>
+
+            <!-- RIGHT: scrolling images -->
+            <div class="wf-scroll-images">
+              <div class="wf-img-block" data-wf-img="0">
+                <img src="../images/projects/patient-portal/03-patient-portal-wireframe-01.jpg" alt="Low fidelity wireframe — homepage layout sketch">
+              </div>
+              <div class="wf-img-block" data-wf-img="1">
+                <img src="../images/projects/patient-portal/03-patient-portal-wireframe-02.jpg" alt="Mid fidelity wireframe — homepage, sign-up, and portal dashboard">
+              </div>
+              <div class="wf-img-block" data-wf-img="2">
+                <img src="../images/projects/patient-portal/03-patient-portal-wireframe-03.jpg" alt="High fidelity wireframe — clinic homepage">
+              </div>
+            </div>
+
+          </div>
         </div>
-        <p class="case-text">
-          Wireframes were developed across three fidelity levels — from early hand sketches through mid-fidelity digital layouts to high-fidelity screen designs. Each stage focused on the clinic's homepage, sign-up flow, and patient portal dashboard.
-        </p>
-        <div class="case-img-half">
-          <figure aria-label="Low fidelity wireframe">
-            <img src="../images/projects/patient-portal/03-patient-portal-wireframe-01.jpg" alt="Low fidelity — early sketch exploring the clinic's homepage layout and content hierarchy" style="width:100%; height:100%; object-fit:cover; display:block;">
-            <figcaption style="font-size:0.75rem; opacity:0.6; margin-top:0.5rem; padding:0 0.25rem;"><strong>Low Fidelity</strong> — Early sketch exploring the clinic's homepage layout and content hierarchy.</figcaption>
-          </figure>
-          <figure aria-label="Mid fidelity wireframe">
-            <img src="../images/projects/patient-portal/03-patient-portal-wireframe-02.jpg" alt="Mid fidelity wireframe of the patient clinic website homepage, sign-up page, and portal dashboard" style="width:100%; height:100%; object-fit:cover; display:block;">
-            <figcaption style="font-size:0.75rem; opacity:0.6; margin-top:0.5rem; padding:0 0.25rem;"><strong>Mid Fidelity</strong> — Wireframe of the clinic website homepage, sign-up page, and patient portal dashboard.</figcaption>
-          </figure>
-        </div>
-        <div class="case-img-half">
-          <figure aria-label="High fidelity wireframe">
-            <img src="../images/projects/patient-portal/03-patient-portal-wireframe-03.jpg" alt="High fidelity wireframe of the patient clinic website homepage" style="width:100%; height:100%; object-fit:cover; display:block;">
-            <figcaption style="font-size:0.75rem; opacity:0.6; margin-top:0.5rem; padding:0 0.25rem;"><strong>High Fidelity</strong> — Wireframe of the patient clinic website homepage.</figcaption>
-          </figure>
-        </div>
+
+        <script>
+          (function () {
+            var imgs   = document.querySelectorAll('.wf-img-block[data-wf-img]');
+            var levels = document.querySelectorAll('.wf-level[data-wf]');
+            var cur    = 0;
+            function show(i) {
+              if (i === cur) return;
+              cur = i;
+              levels.forEach(function (l) {
+                l.classList.toggle('is-active', +l.dataset.wf === i);
+              });
+            }
+            var io = new IntersectionObserver(function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) show(+e.target.dataset.wfImg);
+              });
+            }, { threshold: 0.45 });
+            imgs.forEach(function (b) { io.observe(b); });
+          })();
+        </script>
       </section>
 
       <!-- 04 UI KIT / DESIGN SYSTEM -->
