@@ -100,116 +100,251 @@
         </p>
       </section>
 
-      <!-- 02 RESEARCH & MIND MAP -->
-      <section class="case-section" aria-labelledby="cs-02">
-        <div class="case-section-label">
-          <span class="case-section-num">02</span>
-          <h2 class="case-section-title" id="cs-02">Research &amp; Mind Map</h2>
-        </div>
-        <p class="case-text">
-          The project began with an extensive research and mind-mapping phase, exploring the visual language of space, science, discovery, and childhood curiosity. Key territories included planetary systems, scientific instruments, geometric abstraction, and the primary-color energy of hands-on learning environments.
-        </p>
-        <figure class="case-img-full" aria-label="Apollo research and mind map">
-          <img src="../images/projects/poster-series/01-poster-series-mindmap.jpg" alt="Apollo brand identity research mind map" style="width:100%; height:100%; object-fit:cover; display:block;">
-        </figure>
-      </section>
+      <!-- BRAND SYSTEM STICKY SCROLL (02–08) -->
+      <style>
+        /* ── Sticky scroll layout ── */
+        .brand-scroll-wrapper {
+          position: relative;
+          padding: 2rem 0 5rem;
+        }
+        .brand-scroll-inner {
+          display: flex;
+          align-items: flex-start;
+          gap: 4rem;
+        }
+        /* Left: scrolling text column */
+        .brand-scroll-text {
+          flex: 1;
+          min-width: 0;
+        }
+        .brand-panel {
+          min-height: 88vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 4rem 0;
+          border-bottom: 1px solid rgba(128,128,128,0.15);
+        }
+        .brand-panel:last-child { border-bottom: none; }
+        .brand-panel-eyebrow {
+          font-size: 0.72rem;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          opacity: 0.4;
+          margin-bottom: 1rem;
+          display: block;
+          font-family: inherit;
+        }
+        .brand-panel-title {
+          font-size: clamp(1.6rem, 3vw, 2.25rem);
+          font-weight: 700;
+          line-height: 1.15;
+          margin: 0 0 1.25rem;
+        }
+        .brand-panel-desc {
+          font-size: 1rem;
+          line-height: 1.75;
+          opacity: 0.7;
+          max-width: 36ch;
+          margin: 0;
+        }
+        /* Right: sticky image column */
+        .brand-scroll-visual {
+          flex: 1;
+          position: sticky;
+          top: 12vh;
+          height: 76vh;
+          min-width: 0;
+        }
+        .brand-img-stack {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          border-radius: 10px;
+          overflow: hidden;
+          background: rgba(128,128,128,0.08);
+          box-shadow: 0 4px 32px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .brand-img-frame {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+          transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .brand-img-frame.is-active { opacity: 1; }
+        .brand-img-frame img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        /* Progress dots */
+        .brand-scroll-dots {
+          display: flex;
+          gap: 7px;
+          align-items: center;
+          justify-content: center;
+          margin-top: 1.25rem;
+        }
+        .brand-scroll-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: currentColor;
+          opacity: 0.18;
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          flex-shrink: 0;
+        }
+        .brand-scroll-dot.is-active {
+          opacity: 0.9;
+          transform: scale(1.6);
+        }
+        /* Mobile: stack vertically */
+        @media (max-width: 700px) {
+          .brand-scroll-inner { flex-direction: column; gap: 0; }
+          .brand-scroll-visual {
+            position: relative;
+            top: auto;
+            height: 55vw;
+            min-height: 220px;
+            width: 100%;
+            margin-bottom: 2rem;
+          }
+          .brand-panel {
+            min-height: auto;
+            padding: 2.5rem 0;
+          }
+          .brand-panel-desc { max-width: 100%; }
+        }
+      </style>
 
-      <!-- 03 COLOR SYSTEM -->
-      <section class="case-section accent-blue" aria-labelledby="cs-03">
-        <div class="case-section-label">
-          <span class="case-section-num">03</span>
-          <h2 class="case-section-title" id="cs-03">Color System</h2>
-        </div>
-        <p class="case-text">
-          The color palette is built around a bold, optimistic set of hues — communicating both the serious science behind the museum and the joyful, energetic spirit it aims to inspire. The system is designed to work across digital and print contexts, and scales effectively to large-format environmental signage.
-        </p>
-        <figure class="case-img-full" aria-label="Apollo color system">
-          <img src="../images/projects/poster-series/03-poster-series-color.jpg" alt="Apollo brand color system" style="width:100%; height:100%; object-fit:cover; display:block;">
-        </figure>
-      </section>
+      <div class="brand-scroll-wrapper">
+        <div class="brand-scroll-inner">
 
-      <!-- 04 TYPOGRAPHY -->
-      <section class="case-section" aria-labelledby="cs-04">
-        <div class="case-section-label">
-          <span class="case-section-num">04</span>
-          <h2 class="case-section-title" id="cs-04">Typography</h2>
-        </div>
-        <p class="case-text">
-          The type system pairs a geometric display face for headlines — active, curious, and slightly playful — with a highly readable humanist sans for body copy and exhibit labels. The combination works across all scales: from large wayfinding totems down to small room identifiers.
-        </p>
-        <figure class="case-img-full" aria-label="Apollo typography system">
-          <img src="../images/projects/poster-series/04-poster-series-typography.jpg" alt="Apollo brand typography system" style="width:100%; height:100%; object-fit:cover; display:block;">
-        </figure>
-      </section>
+          <!-- LEFT: scrolling text panels -->
+          <div class="brand-scroll-text">
 
-      <!-- 05 ICON SYSTEM -->
-      <section class="case-section accent-blue" aria-labelledby="cs-05">
-        <div class="case-section-label">
-          <span class="case-section-num">05</span>
-          <h2 class="case-section-title" id="cs-05">Icon System</h2>
-        </div>
-        <p class="case-text">
-          A custom icon set was developed to support the museum's navigation and programming categories — covering subjects from astronomy to chemistry, biology to physics. All icons are drawn on a consistent grid, with stroke weights calibrated to read clearly at wayfinding scale.
-        </p>
-        <div class="case-img-half">
-          <figure aria-label="Apollo icon set — part one">
-            <img src="../images/projects/poster-series/05-poster-series-icons-01%20.jpg" alt="Apollo icon set part one" style="width:100%; height:100%; object-fit:cover; display:block;">
-          </figure>
-          <figure aria-label="Apollo icon set — part two">
-            <img src="../images/projects/poster-series/05-poster-series-icons-02.jpg" alt="Apollo icon set part two" style="width:100%; height:100%; object-fit:cover; display:block;">
-          </figure>
-        </div>
-      </section>
+            <div class="brand-panel" data-step="0">
+              <span class="brand-panel-eyebrow">02 — Visual Language</span>
+              <h2 class="brand-panel-title">Research &amp; Mind Map</h2>
+              <p class="brand-panel-desc">The project began with an extensive research and mind-mapping phase — exploring the visual language of space, science, discovery, and fantasy. Key territories included planetary systems, scientific instruments, geometric abstraction, and the imaginative energy of science fiction.</p>
+            </div>
 
-      <!-- 06 COMBINATION MARK & FINAL LOGOS -->
-      <section class="case-section" aria-labelledby="cs-06">
-        <div class="case-section-label">
-          <span class="case-section-num">06</span>
-          <h2 class="case-section-title" id="cs-06">Combination Mark &amp; Final Logos</h2>
-        </div>
-        <p class="case-text">
-          The combination mark brings together a custom logotype and a geometric symbol inspired by orbital paths and the arc of discovery. The mark system includes primary, stacked, and symbol-only variants — each tested for legibility across signage and print contexts.
-        </p>
-        <figure class="case-img-full" aria-label="Apollo combination mark">
-          <img src="../images/projects/poster-series/02-poster-series-combination-mark.jpg" alt="Apollo combination mark" style="width:100%; height:100%; object-fit:cover; display:block;">
-        </figure>
-        <figure class="case-img-full" aria-label="Apollo final logos">
-          <img src="../images/projects/poster-series/06-poster-series-final-logos.jpg" alt="Apollo final logo system" style="width:100%; height:100%; object-fit:cover; display:block;">
-        </figure>
-      </section>
+            <div class="brand-panel" data-step="1">
+              <span class="brand-panel-eyebrow">03 — Visual Language</span>
+              <h2 class="brand-panel-title">Color System</h2>
+              <p class="brand-panel-desc">The color palette is built around a bold, optimistic set of primary and secondary hues — communicating both the serious science behind the library and the joyful, energetic spirit it aims to inspire. The system scales across digital and large-format print contexts.</p>
+            </div>
 
-      <!-- 07 CAMPAIGN MOCKUPS -->
-      <section class="case-section accent-blue" aria-labelledby="cs-07">
-        <div class="case-section-label">
-          <span class="case-section-num">07</span>
-          <h2 class="case-section-title" id="cs-07">Campaign Poster Mockups</h2>
-        </div>
-        <p class="case-text">
-          The poster campaign applies the brand system to real-world contexts — demonstrating how the visual identity translates across museum campaigns, event announcements, and public-facing print materials. Each mockup shows the brand in situ, at a scale and in an environment that tests its real-world effectiveness.
-        </p>
-        <div class="case-img-half">
-          <figure aria-label="Apollo campaign poster mockup two">
-            <img src="../images/projects/poster-series/07-poster-series-mockup-02.jpeg" alt="Apollo campaign poster mockup" style="width:100%; height:100%; object-fit:cover; display:block;">
-          </figure>
-          <figure aria-label="Apollo campaign poster mockup three">
-            <img src="../images/projects/poster-series/07-poster-series-mockup-03.jpg" alt="Apollo campaign poster mockup" style="width:100%; height:100%; object-fit:cover; display:block;">
-          </figure>
-        </div>
-      </section>
+            <div class="brand-panel" data-step="2">
+              <span class="brand-panel-eyebrow">04 — Visual Language</span>
+              <h2 class="brand-panel-title">Typography</h2>
+              <p class="brand-panel-desc">The type system pairs a geometric display face for headlines with a highly readable humanist sans for body copy and exhibit labels — working across all scales from large wayfinding totems to small room identifiers.</p>
+            </div>
 
-      <!-- 08 WAYFINDING -->
-      <section class="case-section" aria-labelledby="cs-08">
-        <div class="case-section-label">
-          <span class="case-section-num">08</span>
-          <h2 class="case-section-title" id="cs-08">Wayfinding System</h2>
-        </div>
-        <p class="case-text">
-          A speculative wayfinding system demonstrates how the brand scales into the museum environment — color-coded zones, icon-based navigation, and consistent typography across signage at multiple scales, from large directional totems to small room identifiers and exhibit labels.
-        </p>
-        <figure class="case-img-full" aria-label="Apollo wayfinding system">
-          <img src="../images/projects/poster-series/08-poster-series-wayfinding.jpg" alt="Apollo museum wayfinding system" style="width:100%; height:100%; object-fit:cover; display:block;">
-        </figure>
-      </section>
+            <div class="brand-panel" data-step="3">
+              <span class="brand-panel-eyebrow">05 — Visual Language</span>
+              <h2 class="brand-panel-title">Icon System</h2>
+              <p class="brand-panel-desc">A custom icon set supports the library's navigation and programming categories — covering subjects from astronomy to chemistry, biology to physics. All icons are drawn on a consistent grid, calibrated to read clearly at wayfinding scale.</p>
+            </div>
+
+            <div class="brand-panel" data-step="4">
+              <span class="brand-panel-eyebrow">06 — Identifier</span>
+              <h2 class="brand-panel-title">Combination Mark</h2>
+              <p class="brand-panel-desc">The combination mark brings together a custom logotype and a geometric symbol inspired by orbital paths and the arc of discovery. The system includes primary, stacked, and symbol-only variants — each tested across signage and print contexts.</p>
+            </div>
+
+            <div class="brand-panel" data-step="5">
+              <span class="brand-panel-eyebrow">06 — Identifier</span>
+              <h2 class="brand-panel-title">Program Logos</h2>
+              <p class="brand-panel-desc">Program logos extend the identity across Apollo's individual departments and programming areas — each maintaining a visual connection to the core mark while developing its own distinct character.</p>
+            </div>
+
+            <div class="brand-panel" data-step="6">
+              <span class="brand-panel-eyebrow">07 — Campaign</span>
+              <h2 class="brand-panel-title">Campaign Posters</h2>
+              <p class="brand-panel-desc">Three posters for Apollo's advertisement campaign apply the brand system to real-world contexts — demonstrating how the visual identity translates across event announcements and public-facing print materials.</p>
+            </div>
+
+            <div class="brand-panel" data-step="7">
+              <span class="brand-panel-eyebrow">08 — Environment</span>
+              <h2 class="brand-panel-title">Wayfinding System</h2>
+              <p class="brand-panel-desc">A speculative wayfinding system demonstrates how the brand scales into the library environment — color-coded zones, icon-based navigation, and consistent typography across signage at multiple scales.</p>
+            </div>
+
+          </div><!-- /brand-scroll-text -->
+
+          <!-- RIGHT: sticky image viewer -->
+          <div class="brand-scroll-visual">
+            <div class="brand-img-stack">
+              <div class="brand-img-frame is-active" data-step="0">
+                <img src="../images/projects/poster-series/01-poster-series-mindmap.jpg" alt="Apollo research and mind map">
+              </div>
+              <div class="brand-img-frame" data-step="1">
+                <img src="../images/projects/poster-series/03-poster-series-color.jpg" alt="Apollo color system">
+              </div>
+              <div class="brand-img-frame" data-step="2">
+                <img src="../images/projects/poster-series/04-poster-series-typography.jpg" alt="Apollo typography system">
+              </div>
+              <div class="brand-img-frame" data-step="3">
+                <img src="../images/projects/poster-series/05-poster-series-icons-01%20.jpg" alt="Apollo icon system">
+              </div>
+              <div class="brand-img-frame" data-step="4">
+                <img src="../images/projects/poster-series/02-poster-series-combination-mark.jpg" alt="Apollo combination mark">
+              </div>
+              <div class="brand-img-frame" data-step="5">
+                <img src="../images/projects/poster-series/06-poster-series-final-logos.jpg" alt="Apollo program logos">
+              </div>
+              <div class="brand-img-frame" data-step="6">
+                <img src="../images/projects/poster-series/07-poster-series-mockup-01.jpeg" alt="Apollo campaign poster mockup">
+              </div>
+              <div class="brand-img-frame" data-step="7">
+                <img src="../images/projects/poster-series/08-poster-series-wayfinding.jpg" alt="Apollo wayfinding system">
+              </div>
+            </div>
+            <!-- Progress dots -->
+            <div class="brand-scroll-dots" aria-hidden="true">
+              <span class="brand-scroll-dot is-active"></span>
+              <span class="brand-scroll-dot"></span>
+              <span class="brand-scroll-dot"></span>
+              <span class="brand-scroll-dot"></span>
+              <span class="brand-scroll-dot"></span>
+              <span class="brand-scroll-dot"></span>
+              <span class="brand-scroll-dot"></span>
+              <span class="brand-scroll-dot"></span>
+            </div>
+          </div><!-- /brand-scroll-visual -->
+
+        </div><!-- /brand-scroll-inner -->
+      </div><!-- /brand-scroll-wrapper -->
+
+      <script>
+        (function () {
+          var panels = document.querySelectorAll('.brand-panel[data-step]');
+          var frames = document.querySelectorAll('.brand-img-frame[data-step]');
+          var dots   = document.querySelectorAll('.brand-scroll-dot');
+          var active = 0;
+
+          function go(index) {
+            if (index === active) return;
+            active = index;
+            frames.forEach(function (f) {
+              f.classList.toggle('is-active', +f.dataset.step === index);
+            });
+            dots.forEach(function (d, i) {
+              d.classList.toggle('is-active', i === index);
+            });
+          }
+
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) go(+e.target.dataset.step);
+            });
+          }, { threshold: 0.5, rootMargin: '-20% 0px -20% 0px' });
+
+          panels.forEach(function (p) { io.observe(p); });
+        })();
+      </script>
 
       <!-- 09 REFLECTION -->
       <section class="case-section accent-blue" aria-labelledby="cs-09">
