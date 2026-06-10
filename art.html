@@ -9,6 +9,81 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Gallery hover title ── */
+    .gallery-item-img { position: relative; overflow: hidden; cursor: pointer; }
+    .gallery-item-hover {
+      position: absolute; inset: 0;
+      display: flex; align-items: flex-end;
+      padding: 1rem 1.25rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.28s ease; pointer-events: none;
+    }
+    .gallery-item-hover span {
+      color: #fff; font-family: var(--font-display);
+      font-size: 0.875rem; font-weight: 600; letter-spacing: 0.01em;
+    }
+    .gallery-item-img:hover .gallery-item-hover { opacity: 1; }
+
+    /* ── Lightbox ── */
+    .art-lb {
+      position: fixed; inset: 0; z-index: 9000;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem 5rem;
+    }
+    .art-lb[hidden] { display: none; }
+    .art-lb-close {
+      position: absolute; top: 1.25rem; right: 1.25rem;
+      background: none; border: none; cursor: pointer;
+      color: var(--text); padding: 0.5rem; opacity: 0.45;
+      transition: opacity 0.2s; line-height: 1;
+    }
+    .art-lb-close:hover { opacity: 1; }
+    .art-lb-prev, .art-lb-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer;
+      color: var(--text); padding: 1rem; opacity: 0.3;
+      transition: opacity 0.2s; line-height: 1;
+    }
+    .art-lb-prev:hover, .art-lb-next:hover { opacity: 1; }
+    .art-lb-prev { left: 0.75rem; }
+    .art-lb-next { right: 0.75rem; }
+    .art-lb-body {
+      display: flex; gap: 3.5rem; align-items: center;
+      max-width: 1120px; width: 100%;
+    }
+    .art-lb-media { flex: 1.5; min-width: 0; }
+    .art-lb-img {
+      width: 100%; height: auto; max-height: 74vh;
+      object-fit: contain; display: block; border-radius: 6px;
+    }
+    .art-lb-ph {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--bg-alt); border: 1px dashed var(--border);
+      border-radius: 6px; display: flex; align-items: center;
+      justify-content: center; color: var(--text-muted); font-size: 0.875rem;
+    }
+    .art-lb-meta { flex: 1; min-width: 0; }
+    .art-lb-counter {
+      font-size: 0.7rem; letter-spacing: 0.14em;
+      text-transform: uppercase; opacity: 0.38; margin-bottom: 1.25rem;
+    }
+    .art-lb-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 700; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .art-lb-desc {
+      font-size: 0.9375rem; line-height: 1.78;
+      color: var(--text-muted); margin: 0;
+    }
+    @media (max-width: 760px) {
+      .art-lb { padding: 4rem 1.25rem 2rem; align-items: flex-start; justify-content: flex-start; overflow-y: auto; }
+      .art-lb-body { flex-direction: column; gap: 1.5rem; }
+      .art-lb-prev { left: 0; } .art-lb-next { right: 0; }
+    }
+  </style>
   <script>
     (function(){var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(t===null&&d))document.documentElement.setAttribute('data-theme','dark');})();
   </script>
@@ -229,6 +304,30 @@
 
   </main>
 
+  <!-- ===================== LIGHTBOX ===================== -->
+  <div id="art-lb" class="art-lb" role="dialog" aria-modal="true" aria-label="Artwork detail" tabindex="-1" hidden>
+    <button class="art-lb-close" aria-label="Close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <button class="art-lb-prev" aria-label="Previous artwork">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="art-lb-next" aria-label="Next artwork">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="art-lb-body">
+      <div class="art-lb-media">
+        <img class="art-lb-img" src="" alt="" hidden>
+        <div class="art-lb-ph">Image coming soon</div>
+      </div>
+      <div class="art-lb-meta">
+        <p class="art-lb-counter"></p>
+        <h2 class="art-lb-title"></h2>
+        <p class="art-lb-desc"></p>
+      </div>
+    </div>
+  </div>
+
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer" aria-label="Site footer">
     <div class="container">
@@ -266,5 +365,92 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    (function () {
+      var items = [];
+
+      // Build data from DOM and inject hover titles
+      document.querySelectorAll('.gallery-item').forEach(function (el, i) {
+        var link = el.querySelector('.gallery-item-img');
+        var titleEl = el.querySelector('.gallery-caption-title');
+        var descEl = el.querySelector('.gallery-caption-desc');
+        var img = link ? link.querySelector('img') : null;
+        var title = titleEl ? titleEl.textContent.trim() : '';
+
+        items.push({
+          title: title,
+          desc: descEl ? descEl.textContent.trim() : '',
+          src: img ? img.getAttribute('src') : null
+        });
+
+        if (link) {
+          // Inject hover overlay
+          var hover = document.createElement('div');
+          hover.className = 'gallery-item-hover';
+          hover.innerHTML = '<span>' + title + '</span>';
+          link.appendChild(hover);
+
+          // Open lightbox on click
+          link.setAttribute('data-lb', i);
+          link.addEventListener('click', function (e) {
+            e.preventDefault();
+            open(+this.getAttribute('data-lb'));
+          });
+        }
+      });
+
+      var lb       = document.getElementById('art-lb');
+      var lbImg    = lb.querySelector('.art-lb-img');
+      var lbPh     = lb.querySelector('.art-lb-ph');
+      var lbTitle  = lb.querySelector('.art-lb-title');
+      var lbDesc   = lb.querySelector('.art-lb-desc');
+      var lbCount  = lb.querySelector('.art-lb-counter');
+      var current  = 0;
+
+      function render() {
+        var item = items[current];
+        lbTitle.textContent = item.title;
+        lbDesc.textContent  = item.desc;
+        lbCount.textContent = (current + 1) + ' / ' + items.length;
+        if (item.src) {
+          lbImg.src = item.src;
+          lbImg.alt = item.title;
+          lbImg.hidden = false;
+          lbPh.style.display = 'none';
+        } else {
+          lbImg.hidden = true;
+          lbPh.style.display = 'flex';
+        }
+      }
+
+      function open(i) {
+        current = i;
+        render();
+        lb.hidden = false;
+        document.body.style.overflow = 'hidden';
+        lb.focus();
+      }
+
+      function close() {
+        lb.hidden = true;
+        document.body.style.overflow = '';
+      }
+
+      function prev() { current = (current - 1 + items.length) % items.length; render(); }
+      function next() { current = (current + 1) % items.length; render(); }
+
+      lb.querySelector('.art-lb-close').addEventListener('click', close);
+      lb.querySelector('.art-lb-prev').addEventListener('click', prev);
+      lb.querySelector('.art-lb-next').addEventListener('click', next);
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+
+      document.addEventListener('keydown', function (e) {
+        if (lb.hidden) return;
+        if (e.key === 'Escape')     close();
+        if (e.key === 'ArrowLeft')  prev();
+        if (e.key === 'ArrowRight') next();
+      });
+    })();
+  </script>
 </body>
 </html>
