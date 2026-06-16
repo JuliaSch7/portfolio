@@ -65,7 +65,7 @@
         </div>
         <h1 class="project-page-title" id="project-title">SVA Film Logo</h1>
         <p class="project-page-overview">
-          A logo design for the School of Visual Arts Film Festival in New York City — developed from ideation through final identifier. The process includes word associations, a moodboard, two rounds of sketch iterations, digital logo explorations, and a final combination mark system.
+          A logo design for the School of Visual Arts Film Festival in New York City. From word associations and moodboards through two rounds of sketch iterations, digital explorations, and a final combination mark system.
         </p>
         <div class="project-details-bar" aria-label="Project details">
           <div class="detail-item"><label>Role</label><span>Brand Designer</span></div>
@@ -86,44 +86,161 @@
           <h2 class="case-section-title" id="cs-01">Project Overview &amp; Concept</h2>
         </div>
         <p class="case-text">
-          This is a logo design for the School of Visual Arts Film Festival in New York City. The festival needed an identity that felt distinct from the broader SVA brand — something that spoke to the independent spirit of filmmaking while remaining grounded in the institution's legacy of craft and experimentation.
+          A logo design for the School of Visual Arts Film Festival in New York City. The festival needed an identity distinct from the broader SVA brand, something that captured the independent spirit of filmmaking while staying rooted in the institution's legacy of craft and experimentation.
         </p>
         <p class="case-text">
-          The process begins with ideation: word associations and a moodboard to define the visual territory. From there, two rounds of logo sketch iterations explore different directions before moving into digital refinement — resulting in a final logo identifier and combination mark system.
+          The process starts with word associations and a moodboard to define the visual territory. Two rounds of sketch iterations explore different directions before moving into digital refinement, resulting in a final logo identifier and combination mark system.
         </p>
         <div class="highlight-block highlight-block--red">
           <p>"A single frame holds a world. The logo should too."</p>
         </div>
       </section>
 
-      <!-- 02 MOOD BOARD & WORD ASSOCIATIONS -->
+      <!-- 02 MOOD BOARD -->
       <section class="case-section" aria-labelledby="cs-02">
         <div class="case-section-label">
           <span class="case-section-num">02</span>
-          <h2 class="case-section-title" id="cs-02">Mood Board &amp; Word Associations</h2>
+          <h2 class="case-section-title" id="cs-02">Mood Board</h2>
         </div>
         <p class="case-text">
-          Research began with a mood board pulling from film title sequences, independent cinema aesthetics, and type-led identities. Word associations helped define the tonal territory: <strong>raw, cinematic, editorial, bold, underground, New York.</strong>
+          The mood board draws on the visual history of cinema: film stock, vintage cameras, clapperboards, classic black-and-white stills, type-driven title sequences, and film festival logos. The goal was to establish the visual language of the project before putting pencil to paper: high-contrast, typographic, and monochromatic.
         </p>
         <figure class="case-img-full" aria-label="Mood board collage">
-          <img src="../images/projects/sva-film-logo/moodboard.jpg" alt="Mood board for SVA Film identity" style="width:100%; height:100%; object-fit:cover; display:block;">
+          <img src="../images/projects/sva-film-logo/moodboard_02.jpg" alt="Mood board for SVA Film identity" style="width:100%; height:100%; object-fit:cover; display:block;">
         </figure>
-        <figure class="case-img-full" aria-label="Word associations">
-          <img src="../images/projects/sva-film-logo/word-associations.jpg" alt="Word associations for SVA Film identity" style="width:100%; height:100%; object-fit:cover; display:block;">
-        </figure>
-        <p class="case-text">
-          The mood board pushed toward a high-contrast typographic identity — monochromatic, flexible across film grain and digital contexts, and able to hold its own against the visual density of filmmaking environments.
-        </p>
       </section>
 
-      <!-- 03 SKETCHES -->
+      <!-- 03 WORD ASSOCIATIONS -->
       <section class="case-section" aria-labelledby="cs-03">
         <div class="case-section-label">
           <span class="case-section-num">03</span>
-          <h2 class="case-section-title" id="cs-03">Sketch Iterations I &amp; II</h2>
+          <h2 class="case-section-title" id="cs-03">Word Associations</h2>
         </div>
         <p class="case-text">
-          Two rounds of sketching explored different directions: abstract mark-making, typographic treatments, and hybrid approaches combining letterform with cinematic symbols (the aperture, the frame, the reel).
+          Word associations started with the name itself. Every word in "Black and White Film Festival" was broken down into synonyms, variations, and related terms. The exercise wasn't about finding the right word. It was about mapping the full tonal and conceptual territory before narrowing in on a direction.
+        </p>
+        <div style="position:relative;width:100%;height:460px;background:#000;border-radius:8px;overflow:hidden;margin-top:1.5rem;">
+          <canvas id="sva-wam" style="position:absolute;top:0;left:0;"></canvas>
+        </div>
+        <script>
+        (function () {
+          var el = document.getElementById('sva-wam');
+          var wrap = el.parentElement;
+          var ctx = el.getContext('2d');
+          var GROUPS = [
+            { label: 'BLACK/WHITE', words: ['WHITEBLACK','BLACK AND WHITE','BLACK/WHITE','BLACK+WHITE','BLACK&WHITE'] },
+            { label: 'B+W',         words: ['B&W','B/W','BW'] },
+            { label: 'MONOCHROME',  words: ['GRAYSCALE'] },
+            { label: 'CONTRAST',    words: ['DISTINCTION','DIFFERENCE','VARIATION','DIVERSITY','DEFINITIVE','CLEAR'] },
+            { label: 'MOVIE',       words: ['MOTION PICTURE','BROADCAST','PROGRAM','FEATURE','CINEMA','PICTURE','VIDEO','FLICK','VID'] },
+            { label: 'CAMERA',      words: ['LIGHTS, CAMERA, ACTION!','VIDEOCAMERA','FOOTAGE','EYE'] },
+            { label: 'NOIR',        words: ['MYSTERY','THRILLER','CRIME','DRAMA','DARK'] },
+            { label: 'ACTION',      words: ['MOVEMENT','CAPTURE','MOTION','RECORD','SHOOT'] },
+            { label: 'FILM',        words: ['HAZE','BLEAR','CLOUD','BLUR','DULL'] },
+            { label: 'FESTIVAL',    words: ['CELEBRATION','FEST','GALA','FETE','FAIR'] }
+          ];
+          var items = [], lines = [], hoveredIdx = -1;
+
+          function resize() {
+            el.width = wrap.offsetWidth || 800;
+            el.height = wrap.offsetHeight || 460;
+            compute(); draw();
+          }
+
+          function compute() {
+            var W = el.width, H = el.height, n = GROUPS.length, pad = 36;
+            var rx0 = W * 0.27, ry0 = H * 0.21;
+            var childOut = 38, lineH = 13;
+            var rel = [];
+            rel.push({ rx:0, ry:-10, text:'BLACK & WHITE', bold:true, sz:17 });
+            rel.push({ rx:0, ry: 10, text:'FILM FESTIVAL', bold:true, sz:17 });
+            var grpRel = [];
+            GROUPS.forEach(function(g, i) {
+              var a = (i/n)*2*Math.PI - Math.PI/2;
+              var mx = Math.cos(a)*rx0, my = Math.sin(a)*ry0;
+              rel.push({ rx:mx, ry:my, text:g.label, bold:true, sz:12 });
+              var kids = [], nc = g.words.length;
+              // tangential direction (perpendicular to radius)
+              var tx = -Math.sin(a), ty = Math.cos(a);
+              // outward direction
+              var ox2 = Math.cos(a)*childOut, oy2 = Math.sin(a)*childOut;
+              g.words.forEach(function(w, j) {
+                var offset = nc>1 ? (j/(nc-1)-0.5)*(nc-1)*lineH : 0;
+                var kx = mx + ox2 + tx*offset;
+                var ky = my + oy2 + ty*offset;
+                rel.push({ rx:kx, ry:ky, text:w, bold:false, sz:9.5 });
+                kids.push({ rx:kx, ry:ky });
+              });
+              grpRel.push({ rx:mx, ry:my, kids:kids });
+            });
+            // bounding box
+            var minX=1e9,maxX=-1e9,minY=1e9,maxY=-1e9;
+            rel.forEach(function(it) {
+              ctx.font=(it.bold?'bold ':'400 ')+it.sz+'px Inter,sans-serif';
+              var hw=ctx.measureText(it.text).width/2;
+              minX=Math.min(minX,it.rx-hw); maxX=Math.max(maxX,it.rx+hw);
+              minY=Math.min(minY,it.ry-it.sz*0.7); maxY=Math.max(maxY,it.ry+it.sz*0.7);
+            });
+            var fs=Math.min((W-pad*2)/(maxX-minX),(H-pad*2)/(maxY-minY));
+            var ox=W/2-(minX+maxX)/2*fs, oy=H/2-(minY+maxY)/2*fs;
+            items=rel.map(function(it){
+              return{x:ox+it.rx*fs,y:oy+it.ry*fs,text:it.text,bold:it.bold,sz:it.sz*fs};
+            });
+            lines=[];
+            grpRel.forEach(function(gr){
+              var gx=ox+gr.rx*fs,gy=oy+gr.ry*fs;
+              lines.push({x1:ox,y1:oy,x2:gx,y2:gy,main:true});
+              gr.kids.forEach(function(k){
+                lines.push({x1:gx,y1:gy,x2:ox+k.rx*fs,y2:oy+k.ry*fs,main:false});
+              });
+            });
+          }
+
+          function draw() {
+            ctx.clearRect(0,0,el.width,el.height);
+            ctx.fillStyle='#000'; ctx.fillRect(0,0,el.width,el.height);
+            lines.forEach(function(l){
+              ctx.beginPath(); ctx.moveTo(l.x1,l.y1); ctx.lineTo(l.x2,l.y2);
+              ctx.strokeStyle=l.main?'rgba(255,255,255,0.20)':'rgba(255,255,255,0.09)';
+              ctx.lineWidth=l.main?0.8:0.5; ctx.stroke();
+            });
+            ctx.textAlign='center'; ctx.textBaseline='middle';
+            items.forEach(function(it,idx){
+              var h=idx===hoveredIdx;
+              ctx.font=(it.bold?'bold ':'400 ')+(h?it.sz*1.8:it.sz)+'px Inter,sans-serif';
+              ctx.fillStyle=h?'#fff':(it.bold?'#fff':'rgba(255,255,255,0.58)');
+              ctx.fillText(it.text,it.x,it.y);
+            });
+          }
+
+          el.addEventListener('mousemove',function(e){
+            var r=el.getBoundingClientRect();
+            var mx=(e.clientX-r.left)*(el.width/r.width),my=(e.clientY-r.top)*(el.height/r.height);
+            var best=-1,bd=38;
+            items.forEach(function(it,idx){
+              var d=Math.sqrt((it.x-mx)*(it.x-mx)+(it.y-my)*(it.y-my));
+              if(d<bd){bd=d;best=idx;}
+            });
+            if(best!==hoveredIdx){hoveredIdx=best;draw();}
+          });
+          el.addEventListener('mouseleave',function(){if(hoveredIdx!==-1){hoveredIdx=-1;draw();}});
+
+          document.fonts.ready.then(resize);
+          if(window.ResizeObserver) new ResizeObserver(resize).observe(wrap);
+          else window.addEventListener('resize',resize);
+          requestAnimationFrame(resize);
+        })();
+        </script>
+      </section>
+
+      <!-- 04 SKETCHES -->
+      <section class="case-section" aria-labelledby="cs-04">
+        <div class="case-section-label">
+          <span class="case-section-num">04</span>
+          <h2 class="case-section-title" id="cs-04">Sketch Iterations I &amp; II</h2>
+        </div>
+        <p class="case-text">
+          Two rounds of sketching explored abstract mark-making, typographic treatments, and hybrid approaches that combine letterforms with cinematic symbols. The second round narrowed to three directions: the aperture, the unspooled film negative, and the clapperboard. The clapperboard pulled ahead. It was recognizable enough to read, abstract enough to be graphic, and strong enough to anchor a wordmark.
         </p>
         <div class="case-img-half">
           <figure aria-label="Sketch iteration one">
@@ -133,19 +250,17 @@
             <img src="../images/projects/sva-film-logo/logo-sketches-2.png" alt="SVA Film logo sketch iteration II" style="width:100%; height:100%; object-fit:cover; display:block;">
           </figure>
         </div>
-        <p class="case-text">
-          The second round narrowed to three promising directions, with the strongest emerging from the intersection of a bold condensed wordmark and a geometric frame device.
         </p>
       </section>
 
-      <!-- 04 LOGO ITERATIONS -->
-      <section class="case-section accent-red" aria-labelledby="cs-04">
+      <!-- 05 LOGO ITERATIONS -->
+      <section class="case-section accent-red" aria-labelledby="cs-05">
         <div class="case-section-label">
-          <span class="case-section-num">04</span>
-          <h2 class="case-section-title" id="cs-04">Logo Iterations I &amp; II</h2>
+          <span class="case-section-num">05</span>
+          <h2 class="case-section-title" id="cs-05">Logo Iterations I &amp; II</h2>
         </div>
         <p class="case-text">
-          Digital iterations refined proportion, weight, and the relationship between letterform and mark. Two directions were developed to high fidelity and presented for feedback.
+          Digital iterations refined proportion, weight, and the relationship between letterform and mark. Two directions made it to high fidelity. One would become the final logo.
         </p>
         <figure class="case-img-full" aria-label="Logo iteration spread">
           <img src="../images/projects/sva-film-logo/logo-iterations-1-1.jpg" alt="SVA Film logo digital iterations" style="width:100%; height:100%; object-fit:cover; display:block;">
@@ -163,42 +278,42 @@
         </figure>
       </section>
 
-      <!-- 05 COMBINATION MARKS -->
-      <section class="case-section" aria-labelledby="cs-05">
+      <!-- 06 COMBINATION MARKS -->
+      <section class="case-section" aria-labelledby="cs-06">
         <div class="case-section-label">
-          <span class="case-section-num">05</span>
-          <h2 class="case-section-title" id="cs-05">Combination Mark &amp; Identifier</h2>
+          <span class="case-section-num">06</span>
+          <h2 class="case-section-title" id="cs-06">Combination Mark &amp; Identifier</h2>
         </div>
         <p class="case-text">
-          The final direction was developed into a full combination mark system — primary lockup, stacked variant, icon-only mark, and reversed versions for dark backgrounds. Each variant was tested at small sizes for legibility.
+          The final logo was built into a complete combination mark system: primary lockup, stacked variant, icon-only mark, and reversed versions for dark backgrounds. Every variant was tested at small sizes for legibility.
         </p>
         <figure class="case-img-full" aria-label="Full logo system">
           <img src="../images/projects/sva-film-logo/logo-iterations-2-1.jpg" alt="SVA Film full logo system and variants" style="width:100%; height:100%; object-fit:cover; display:block;">
         </figure>
       </section>
 
-      <!-- 06 FINAL LOGOS -->
-      <section class="case-section" aria-labelledby="cs-06">
+      <!-- 07 FINAL LOGOS -->
+      <section class="case-section" aria-labelledby="cs-07">
         <div class="case-section-label">
-          <span class="case-section-num">06</span>
-          <h2 class="case-section-title" id="cs-06">Final Logos</h2>
+          <span class="case-section-num">07</span>
+          <h2 class="case-section-title" id="cs-07">Final Logos</h2>
         </div>
+        <p class="case-text">
+          The final wordmark combines a custom-modified condensed sans-serif with a geometric framing device that references film aspect ratios. The clapperboard lives in the mark: a diagonal slash cuts through a square frame, creating tension and movement within something otherwise controlled and geometric. The condensed sans-serif stacked flush left gives it editorial weight.
+        </p>
         <figure class="case-img-full" aria-label="Final logo on light background">
           <img src="../images/projects/sva-film-logo/final-logo.jpg" alt="SVA Film final logo" style="width:100%; height:100%; object-fit:cover; display:block;">
         </figure>
-        <p class="case-text">
-          The final wordmark uses a custom-modified condensed sans-serif with a geometric frame device that echoes a film aspect ratio. The identity is monochromatic with a single accent red for applied contexts.
-        </p>
       </section>
 
-      <!-- 07 MOCKUPS -->
-      <section class="case-section accent-red" aria-labelledby="cs-07">
+      <!-- 08 MOCKUPS -->
+      <section class="case-section accent-red" aria-labelledby="cs-08">
         <div class="case-section-label">
-          <span class="case-section-num">07</span>
-          <h2 class="case-section-title" id="cs-07">Mockups</h2>
+          <span class="case-section-num">08</span>
+          <h2 class="case-section-title" id="cs-08">Mockups</h2>
         </div>
         <p class="case-text">
-          The identity was applied across a range of merchandise and print contexts to demonstrate real-world versatility: enamel pins, t-shirts, tote bags, and caps.
+          Enamel pins, t-shirts, tote bags, and caps. The identity was applied across merchandise and print contexts to see how the mark holds up in the real world. The geometric simplicity of the mark made it adaptable without losing its character.
         </p>
         <div class="case-img-quarter">
           <figure aria-label="Hat mockup"><img src="../images/projects/sva-film-logo/SVA_Mockup_Hat.jpg" alt="SVA Film hat mockup" style="width:100%; height:100%; object-fit:cover; display:block;"></figure>
@@ -212,17 +327,17 @@
         </div>
       </section>
 
-      <!-- 08 REFLECTION -->
-      <section class="case-section" aria-labelledby="cs-08">
+      <!-- 09 REFLECTION -->
+      <section class="case-section" aria-labelledby="cs-09">
         <div class="case-section-label">
-          <span class="case-section-num">08</span>
-          <h2 class="case-section-title" id="cs-08">Final Outcome &amp; Reflection</h2>
+          <span class="case-section-num">09</span>
+          <h2 class="case-section-title" id="cs-09">Final Outcome &amp; Reflection</h2>
         </div>
         <p class="case-text">
-          The SVA Film identity demonstrates how a strong conceptual anchor — the cinematic frame — can generate a cohesive, flexible visual system without becoming overly literal. The restraint of a monochromatic palette gave the mark authority and range.
+          The SVA Black &amp; White Film Festival identity started with a name and ended with a mark that earns its references. The clapperboard wasn't chosen for nostalgia. It was chosen because it abstracted well, held its graphic quality at every size, and carried the spirit of filmmaking without illustrating it literally. The restraint of a monochromatic palette gave the mark authority and range.
         </p>
         <p class="case-text">
-          <strong>What I learned:</strong> Logo design rewards patience with the sketch process. The final solution came from an idea in the second round of sketching that almost didn't make it into digital — a reminder to fully resolve ideas on paper before moving to screen.
+          This project reinforced the idea that the research phase isn't preliminary work. It is the work. The word associations and mood board didn't just inform the sketches; they made the final decision legible. The final mark came from an idea in the second round of sketching that almost didn't make it into digital. Without that early mapping, it might not have. With it, the choice was obvious.
         </p>
       </section>
 
