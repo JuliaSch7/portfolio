@@ -960,14 +960,14 @@ figcaption {
 }
 
 .gallery-grid {
-  columns: 3;
-  column-gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
   padding: 4rem 0;
 }
 
 .gallery-item {
-  break-inside: avoid;
-  margin-bottom: 1.5rem;
   cursor: pointer;
 }
 
@@ -1037,7 +1037,7 @@ figcaption {
   .case-img-third  { grid-template-columns: 1fr 1fr; }
   .case-img-quarter{ grid-template-columns: 1fr 1fr; }
 
-  .gallery-grid { columns: 2; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 600px) {
@@ -1080,7 +1080,7 @@ figcaption {
 
   .mobile-menu-toggle { display: flex; }
 
-  .gallery-grid { columns: 1; }
+  .gallery-grid { grid-template-columns: 1fr; }
   .case-img-third { grid-template-columns: 1fr; }
   .project-details-bar { grid-template-columns: 1fr 1fr; }
 
