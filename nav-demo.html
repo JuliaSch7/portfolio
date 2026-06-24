@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nav Demo — Biber-style</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #e9e1d3;
+      color: #1e1b17;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      background: #e9e1d3;
+      z-index: 100;
+      padding-top: 20px; /* space above the first rule, matching Biber */
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      column-gap: 32px;
+      align-items: start;
+      margin: 0 32px;        /* left/right margin — rules don't touch screen edges */
+      padding-bottom: 0;
+      border-bottom: 5px solid #1e1b17;
+    }
+
+    .nav-col {
+      border-top: 5px solid #1e1b17;
+      padding: 10px 0 14px;
+    }
+
+    /* Sub-nav column: invisible by default, slides in */
+    .nav-col--sub {
+      border-top: 5px solid #1e1b17;
+      padding: 10px 0 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+    }
+
+    .nav-col--sub.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ── LOGO ── */
+    .nav-logo {
+      display: block;
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+      color: #1e1b17;
+      padding: 4px 20px 0;
+      line-height: 1.15;
+    }
+
+    /* ── NAV ITEMS ── */
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-list a,
+    .nav-list button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 5px 14px;
+      font-size: 0.92rem;
+      font-weight: 400;
+      text-decoration: none;
+      color: #1e1b17;
+      background: none;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      line-height: 1.5;
+      font-family: inherit;
+    }
+
+    /* Dimmed: non-active items in primary nav go gray */
+    .nav-list.dimmed li a,
+    .nav-list.dimmed li button {
+      color: #9a9186;
+    }
+
+    .nav-list.dimmed li.active a,
+    .nav-list.dimmed li.active button {
+      color: #1e1b17;
+    }
+
+    /* Hover + active highlight */
+    .nav-list li a:hover,
+    .nav-list li button:hover,
+    .nav-list li.active > a,
+    .nav-list li.active > button {
+      background: #b4c9d1; /* dusty eggshell blue */
+    }
+
+    /* Active secondary nav item goes bold */
+    .nav-list li.active-secondary > a {
+      font-weight: 600;
+      background: none;
+    }
+
+    /* Separator under each item */
+    .nav-list li {
+      border-bottom: 1px solid #c8bfb0;
+    }
+    .nav-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* ── PLACEHOLDER PAGE CONTENT ── */
+    .page-content {
+      padding: 60px 24px;
+      max-width: 800px;
+    }
+
+    .page-content h1 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .page-content p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #555;
+      max-width: 560px;
+      margin-bottom: 10px;
+    }
+
+    .hint {
+      margin-top: 40px;
+      font-size: 0.75rem;
+      color: #bbb;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── DEMO BUTTONS ── */
+    .demo-controls {
+      margin-top: 32px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .demo-btn {
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-family: inherit;
+      border: 1px solid #ccc;
+      background: none;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    .demo-btn:hover {
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="nav-grid" aria-label="Main navigation">
+
+      <!-- Col 1: Logo -->
+      <div class="nav-col">
+        <a href="#" class="nav-logo" id="nav-logo">Julia<br>Schirrmeister</a>
+      </div>
+
+      <!-- Col 2: Primary nav -->
+      <div class="nav-col">
+        <ul class="nav-list" id="primary-nav">
+          <li id="item-branding">
+            <button aria-expanded="false">Branding</button>
+          </li>
+          <li id="item-ux">
+            <button aria-expanded="false">UX</button>
+          </li>
+          <li id="item-editorial">
+            <button aria-expanded="false">Editorial</button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Sub-nav (populated dynamically) -->
+      <div class="nav-col nav-col--sub" id="sub-nav" aria-hidden="true">
+        <ul class="nav-list" id="sub-nav-list"></ul>
+      </div>
+
+      <!-- Col 4: Secondary nav -->
+      <div class="nav-col">
+        <ul class="nav-list" id="secondary-nav">
+          <li id="item-about"><a href="#">About</a></li>
+          <li id="item-contact"><a href="#">Contact</a></li>
+          <li id="item-resume"><a href="#">Resume</a></li>
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+
+  <main class="page-content" id="page-content">
+    <h1 id="page-title">Navigation demo</h1>
+    <p>Click the primary nav items — <strong>Branding</strong>, <strong>UX</strong>, or <strong>Editorial</strong> — to expand the sub-nav column. Click the same item again to collapse it. Try the secondary nav too.</p>
+    <p class="hint">Standalone prototype — not connected to the portfolio</p>
+
+    <div class="demo-controls">
+      <button class="demo-btn" onclick="simulatePage('branding')">Simulate: Branding page</button>
+      <button class="demo-btn" onclick="simulatePage('ux')">Simulate: UX page</button>
+      <button class="demo-btn" onclick="simulatePage('editorial')">Simulate: Editorial page</button>
+      <button class="demo-btn" onclick="simulatePage('about')">Simulate: About page</button>
+      <button class="demo-btn" onclick="simulatePage('home')">Reset</button>
+    </div>
+  </main>
+
+  <script>
+    const subNavs = {
+      branding:  ['SVA Film Logo', 'Apollo'],
+      ux:        ['Patient Portal'],
+      editorial: ['Thesis Book', 'Zine'],
+    };
+
+    const primaryItems = {
+      branding:  document.getElementById('item-branding'),
+      ux:        document.getElementById('item-ux'),
+      editorial: document.getElementById('item-editorial'),
+    };
+
+    const secondaryItems = {
+      about:   document.getElementById('item-about'),
+      contact: document.getElementById('item-contact'),
+      resume:  document.getElementById('item-resume'),
+    };
+
+    const primaryNav  = document.getElementById('primary-nav');
+    const subNav      = document.getElementById('sub-nav');
+    const subNavList  = document.getElementById('sub-nav-list');
+
+    let activeKey = null; // which primary item is open
+
+    function closeAll() {
+      Object.values(primaryItems).forEach(li => {
+        li.classList.remove('active');
+        li.querySelector('button').setAttribute('aria-expanded', 'false');
+      });
+      Object.values(secondaryItems).forEach(li => li.classList.remove('active-secondary'));
+      primaryNav.classList.remove('dimmed');
+      subNav.classList.remove('visible');
+      subNav.setAttribute('aria-hidden', 'true');
+      activeKey = null;
+    }
+
+    function openPrimary(key) {
+      closeAll();
+      activeKey = key;
+
+      const li  = primaryItems[key];
+      const btn = li.querySelector('button');
+      li.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
+      primaryNav.classList.add('dimmed');
+
+      // Populate sub-nav
+      subNavList.innerHTML = subNavs[key]
+        .map(name => `<li><a href="#">${name}</a></li>`)
+        .join('');
+
+      subNav.classList.add('visible');
+      subNav.setAttribute('aria-hidden', 'false');
+    }
+
+    // Wire up primary nav buttons
+    Object.entries(primaryItems).forEach(([key, li]) => {
+      li.querySelector('button').addEventListener('click', () => {
+        if (activeKey === key) {
+          closeAll();
+        } else {
+          openPrimary(key);
+        }
+      });
+    });
+
+    // Wire up secondary nav — closes primary sub-nav, marks self active
+    Object.entries(secondaryItems).forEach(([key, li]) => {
+      li.querySelector('a').addEventListener('click', (e) => {
+        e.preventDefault();
+        closeAll();
+        li.classList.add('active-secondary');
+        // dim primary nav
+        primaryNav.classList.add('dimmed');
+      });
+    });
+
+    // Logo resets everything
+    document.getElementById('nav-logo').addEventListener('click', (e) => {
+      e.preventDefault();
+      closeAll();
+    });
+
+    // Demo page simulator
+    function simulatePage(page) {
+      closeAll();
+      const titles = {
+        branding:  'Branding',
+        ux:        'UX',
+        editorial: 'Editorial',
+        about:     'About',
+        home:      'Navigation demo',
+      };
+      document.getElementById('page-title').textContent = titles[page] || page;
+
+      if (page === 'about') {
+        secondaryItems.about.classList.add('active-secondary');
+        primaryNav.classList.add('dimmed');
+      } else if (primaryItems[page]) {
+        openPrimary(page);
+      }
+    }
+  </script>
+
+</body>
+</html>
