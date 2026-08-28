@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=5">
   <!-- Prevent FOUC on dark mode -->
   <script>
     (function(){var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(t===null&&d))document.documentElement.setAttribute('data-theme','dark');})();
@@ -70,7 +70,6 @@
             </li>
 
             <li role="none"><a href="about.html" class="nav-link">About</a></li>
-            <li role="none"><a href="art.html" class="nav-link">Art</a></li>
           </ul>
 
           <!-- Dark mode toggle -->
@@ -113,19 +112,16 @@
     <section class="hero" aria-labelledby="hero-heading">
       <div class="container">
         <h1 class="hero-headline" id="hero-heading">
-          Design rooted<br>
-          in <em>research.</em><br>
-          Art grounded<br>
-          in craft.
+          My practice is built on <em>systems thinking</em> and <em>inclusive design.</em>
         </h1>
         <p class="hero-sub">
-          Graphic designer and artist with a strong background in design, scholarly research, writing, and administration. Currently seeking full-time opportunities in New York City.
+          I'm a graphic designer with a background in art history and an MFA in Communication Design. Based in New York City.
         </p>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="section" style="padding-top:0; scroll-margin-top:80px;" aria-labelledby="projects-heading">
+    <section id="projects" class="section" style="padding-top:0; padding-bottom:3rem; scroll-margin-top:80px;" aria-labelledby="projects-heading">
       <div class="container">
 
         <div class="projects-list">
@@ -286,6 +282,10 @@
           </a>
         </div>
         <nav class="footer-contact" aria-label="Contact and social links">
+          <a href="Julia_Schirrmeister_Resume_2026.pdf" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="View resume (opens in new tab)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Resume
+          </a>
           <a href="https://linkedin.com/in/julia-schirrmeister-4711a9a7" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -314,7 +314,7 @@
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
         <span>© 2026 Julia Schirrmeister</span>
-        <span>Designed &amp; vibe coded by Julia Schirrmeister</span>
+        <span>Vibe Coded with Claude by Julia Schirrmeister</span>
       </div>
     </div>
   </footer>

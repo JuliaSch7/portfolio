@@ -14,12 +14,12 @@
   --yellow: #FFD600;
 
   /* Light Mode */
-  --bg:          #FAFAFA;
-  --bg-alt:      #F0EFED;
-  --text:        #111111;
-  --text-muted:  #666666;
+  --bg:          #F9FAFB;
+  --bg-alt:      #EEEEF0;
+  --text:        #101720;
+  --text-muted:  #5A6070;
   --border:      #E0DFDD;
-  --nav-bg:      rgba(250, 250, 250, 0.95);
+  --nav-bg:      rgba(249, 250, 251, 0.95);
 
   /* Typography */
   --font-display: 'Syne', sans-serif;
@@ -184,7 +184,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-brand {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   white-space: nowrap;
@@ -413,19 +413,20 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 5rem;
-  padding-bottom: 1rem;
+  padding-top: 8rem;
+  padding-bottom: 2.5rem;
 }
 
 .hero-eyebrow { margin-bottom: 1.75rem; }
 
 .hero-headline {
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-size: clamp(2rem, 5vw, 4.5rem);
   font-family: var(--font-display);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.04em;
   margin-bottom: 1.75rem;
+  max-width: 75%;
   animation: fadeUp 0.7s ease 0.1s both;
 }
 .hero-headline em {
@@ -438,6 +439,18 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-muted);
   max-width: 500px;
   line-height: 1.7;
+  margin-bottom: 0;
+  animation: fadeUp 0.7s ease 0.25s both;
+}
+
+.hero-statement {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.25rem, 2.2vw, 2rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  max-width: 780px;
   margin-bottom: 0;
   animation: fadeUp 0.7s ease 0.25s both;
 }
@@ -481,6 +494,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: clamp(1.5rem, 3vw, 2.5rem) 0;
   border-bottom: 1px solid var(--border);
 }
+.project-item:last-child { border-bottom: none; }
 
 .project-meta {
   display: flex;
