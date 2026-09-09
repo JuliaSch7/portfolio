@@ -28,11 +28,11 @@
                 <svg class="dropdown-chevron" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </button>
               <ul class="nav-dropdown-menu" id="works-dropdown" role="listbox" data-open="false">
-                <li role="none"><a href="patient-portal.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">01</span>Patient Portal</a></li>
-                <li role="none"><a href="sva-film-logo.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">02</span>SVA Film Logo</a></li>
-                <li role="none"><a href="thesis-book.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">03</span>Thesis Book</a></li>
-                <li role="none"><a href="capstone-zine.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">04</span>Capstone Zine</a></li>
-                <li role="none"><a href="poster-series.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">05</span>Apollo</a></li>
+                <li role="none"><a href="patient-portal.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">01</span>Healthcare UX/UI</a></li>
+                <li role="none"><a href="sva-film-logo.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">02</span>Logo/Identity</a></li>
+                <li role="none"><a href="thesis-book.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">03</span>Editorial Book</a></li>
+                <li role="none"><a href="capstone-zine.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">04</span>Print/Editorial</a></li>
+                <li role="none"><a href="poster-series.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">05</span>Branding</a></li>
               </ul>
             </li>
             <li role="none"><a href="../about.html" class="nav-link">About</a></li>
@@ -110,7 +110,7 @@
         }
         /* Left: scrolling text column */
         .brand-scroll-text {
-          flex: 1;
+          flex: 0 0 320px;
           min-width: 0;
         }
         .brand-panel {
@@ -148,18 +148,14 @@
         .brand-scroll-visual {
           flex: 1;
           position: sticky;
-          top: 12vh;
-          height: 76vh;
+          top: 8vh;
+          height: 84vh;
           min-width: 0;
         }
         .brand-img-stack {
           position: relative;
           width: 100%;
           height: 100%;
-          border-radius: 10px;
-          overflow: hidden;
-          background: rgba(128,128,128,0.08);
-          box-shadow: 0 4px 32px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
         }
         .brand-img-frame {
           position: absolute;
@@ -171,7 +167,7 @@
         .brand-img-frame img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
           display: block;
         }
         /* Progress dots */
