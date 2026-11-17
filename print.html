@@ -26,6 +26,8 @@
     .gallery-item-img:hover .gallery-item-hover { opacity: 1; }
     .gallery-caption-medium { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
     .gallery-caption-year   { font-size: 0.8rem; color: var(--text-muted); }
+    .art-lb-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.25rem; font-size: 0.875rem; font-weight: 600; color: var(--text); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; transition: opacity 0.2s; }
+    .art-lb-link:hover { opacity: 0.6; }
 
     /* ── Lightbox ── */
     .art-lb {
@@ -147,235 +149,246 @@
       <div class="container">
         <div class="gallery-grid" style="padding-top:1.5rem;">
 
-          <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Risograph Flower Print — view larger">
-              <img src="images/Print/01_Riso_flower.jpeg" alt="Risograph Flower Print" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <article class="gallery-item" data-lb-link="projects/capstone-zine.html">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Object(ified) — view larger">
+              <img src="images/Print/01_Riso_Zine.jpg" alt="Object(ified)" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Risograph Flower Print</p>
-              <p class="gallery-caption-medium">Risograph</p>
+              <p class="gallery-caption-title" hidden>Object(ified)</p>
+              <p class="gallery-caption-medium">Risograph Zine</p>
+              <p class="gallery-caption-desc" hidden>To learn more about this risograph zine, please check out my in-depth portfolio project.</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Risograph Landscape Print — view larger">
-              <img src="images/Print/02_Riso_RockSalt.jpg" alt="Risograph Landscape Print" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Crone Cyclone — view larger">
+              <img src="images/Print/02_RisoAnimation_CroneCyclone.gif" alt="Crone Cyclone" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Risograph Landscape Print</p>
-              <p class="gallery-caption-medium">Risograph</p>
-            </div>
-          </article>
-
-          <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Crone Cyclone Riso Animation — view larger">
-              <img src="images/Print/03_RisoAnimation_CroneCyclone.gif" alt="Crone Cyclone Riso Animation" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </a>
-            <div class="gallery-caption">
-              <p class="gallery-caption-title">Crone Cyclone Riso Animation</p>
-              <p class="gallery-caption-medium">Risograph Animation</p>
+              <p class="gallery-caption-title" hidden>Crone Cyclone</p>
+              <p class="gallery-caption-medium">Riso Animation</p>
               <p class="gallery-caption-desc" hidden>An exploration into the perception and construction of the word "crone" by reconfiguring and creating new word associations based on popular phrases, metaphors, and proverbs. This work aims to reveal the negative perception through which society views older women and how older women are often pigeonholed into two categories: cruel crone or a gentle granny.</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Sailor Moon Riso Animation — view larger">
-              <img src="images/Print/04_RisoAnimation_SailorMoon.gif" alt="Sailor Moon Riso Animation" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Alicia’s Flowers — view larger">
+              <img src="images/Print/03_Riso_flower.jpeg" alt="Alicia’s Flowers" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Sailor Moon Riso Animation</p>
-              <p class="gallery-caption-medium">Risograph Animation</p>
-            </div>
-          </article>
-
-          <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Notorious RGB RBG Riso — view larger">
-              <img src="images/Print/05_Riso_RBG.jpg" alt="Notorious RGB RBG Riso" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </a>
-            <div class="gallery-caption">
-              <p class="gallery-caption-title">Notorious RGB RBG Riso</p>
+              <p class="gallery-caption-title" hidden>Alicia’s Flowers</p>
               <p class="gallery-caption-medium">Risograph</p>
-              <p class="gallery-caption-desc" hidden>This design response, "Notorious RGB RBG, Riso", distorts the image and words of Ruth Bader Ginsburg, unraveling the veneer of the ‘Cult of Personality’ that elevates her into an untouchable icon. The work probes the tension between reverence and reality through layered riso visuals and warped text, excerpts from some of her most famous quotes, exposing the dangers of flattening a complex figure into a saintly caricature. It questions how society constructs—and risks losing—the humanity behind the myth.</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Crone Abstractions — view larger">
-              <img src="images/Print/06_Riso_Women.jpg" alt="Crone Abstractions" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Sailor Moon Title Sequence — view larger">
+              <img src="images/Print/04_RisoAnimation_SailorMoon.gif" alt="Sailor Moon Title Sequence" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Crone Abstractions</p>
+              <p class="gallery-caption-title" hidden>Sailor Moon Title Sequence</p>
+              <p class="gallery-caption-medium">Riso Animation</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Alicia’s Landscape — view larger">
+              <img src="images/Print/05_Riso_RockSalt.jpg" alt="Alicia’s Landscape" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title" hidden>Alicia’s Landscape</p>
+              <p class="gallery-caption-medium">Risograph</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Notorious RGB RBG — view larger">
+              <img src="images/Print/06_Riso_RBG.jpg" alt="Notorious RGB RBG" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title" hidden>Notorious RGB RBG</p>
+              <p class="gallery-caption-medium">Risograph</p>
+              <p class="gallery-caption-desc" hidden>This design response, "Notorious RGB RBG, Riso", distorts the image and words of Ruth Bader Ginsburg, unraveling the veneer of the ‘Cult of Personality’ that elevates her into an untouchable icon. The work probes the tension between reverence and reality through layered riso visuals and warped text, excerpts from some of her most famous quotes, exposing the dangers of flattening a complex figure into a saintly caricature. It questions how society constructs and risks losing the humanity behind the myth.</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Crone Abstraction I — view larger">
+              <img src="images/Print/07_Riso_Women.jpg" alt="Crone Abstraction I" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title" hidden>Crone Abstraction I</p>
               <p class="gallery-caption-medium">Risograph</p>
               <p class="gallery-caption-desc" hidden>These scans were further altered and abstracted, marked by rippling, wave-like distortions that further fragment the visual plane. Building on the deconstruction of Ruth Bader Ginsburg’s image, this progression strips away familiar iconography to challenge the viewer’s perception of identity and mythology. By employing riso printing, scanning, and digital distortion, the series defamiliarizes static representations, inviting a reimagining and redefinition of the Crone as a fluid, multifaceted figure that defies societal constraints and expectations.</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Screenprint: Crossroads — view larger">
-              <img src="images/Print/07_Screenprint.jpg" alt="Screenprint: Crossroads" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Crossroads — view larger">
+              <img src="images/Print/08_Screenprint.jpg" alt="Crossroads" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Screenprint: Crossroads</p>
+              <p class="gallery-caption-title" hidden>Crossroads</p>
               <p class="gallery-caption-medium">Screenprint</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Monotype — view larger">
-              <img src="images/Print/08_Monotype_Flower.jpg" alt="Monotype" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Poppy — view larger">
+              <img src="images/Print/09_Monotype_Flower.jpg" alt="Poppy" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Monotype</p>
+              <p class="gallery-caption-title" hidden>Poppy</p>
               <p class="gallery-caption-medium">Monotype</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Carborundum with Chine Collé — view larger">
-              <img src="images/Print/09_Caborundum_ChineColle.jpg" alt="Carborundum with Chine Collé" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Cliff — view larger">
+              <img src="images/Print/10_Caborundum_ChineColle.jpg" alt="Cliff" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Carborundum with Chine Collé</p>
-              <p class="gallery-caption-medium">Carborundum, Chine-Collé</p>
+              <p class="gallery-caption-title" hidden>Cliff</p>
+              <p class="gallery-caption-medium">Carborundum with Chine Collé</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Carborundum Print I — view larger">
-              <img src="images/Print/010_Carborundum_01.jpg" alt="Carborundum Print I" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Carborundum I — view larger">
+              <img src="images/Print/011_Carborundum_01.jpg" alt="Carborundum I" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Carborundum Print I</p>
+              <p class="gallery-caption-title" hidden>Carborundum I</p>
               <p class="gallery-caption-medium">Carborundum</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Carborundum Print II — view larger">
-              <img src="images/Print/011_Carborundum_02.jpg" alt="Carborundum Print II" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Carborundum II — view larger">
+              <img src="images/Print/012_Carborundum_02.jpg" alt="Carborundum II" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Carborundum Print II</p>
+              <p class="gallery-caption-title" hidden>Carborundum II</p>
               <p class="gallery-caption-medium">Carborundum</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Sugar-Lift Aquatint — view larger">
-              <img src="images/Print/012_SugarLiftAquatint.JPG" alt="Sugar-Lift Aquatint" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Lady Justice — view larger">
+              <img src="images/Print/013_Aquatint_Justice.PNG" alt="Lady Justice" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Sugar-Lift Aquatint</p>
+              <p class="gallery-caption-title" hidden>Lady Justice</p>
+              <p class="gallery-caption-medium">Intaglio Sandpaper Aquatint</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Goya’s Bulls — view larger">
+              <img src="images/Print/014_Aquatint_Bulls.jpg" alt="Goya’s Bulls" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title" hidden>Goya’s Bulls</p>
+              <p class="gallery-caption-medium">Spray Aquatint</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Carborundum III — view larger">
+              <img src="images/Print/015_Carborundum_03.jpg" alt="Carborundum III" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title" hidden>Carborundum III</p>
+              <p class="gallery-caption-medium">Carborundum</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Untitled — view larger">
+              <img src="images/Print/016_SugarLiftAquatint.JPG" alt="Untitled" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title" hidden>Untitled</p>
+              <p class="gallery-caption-medium">Sugar-Lift Aquatint</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Flowers — view larger">
+              <img src="images/Print/017_Aquatint_Flower.jpg" alt="Flowers" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title" hidden>Flowers</p>
               <p class="gallery-caption-medium">Aquatint</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Carborundum Print III — view larger">
-              <img src="images/Print/013_Carborundum_03.jpg" alt="Carborundum Print III" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Chrysanthemum — view larger">
+              <img src="images/Print/018_Linocut_Chrysanthemum.JPG" alt="Chrysanthemum" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Carborundum Print III</p>
-              <p class="gallery-caption-medium">Carborundum</p>
-            </div>
-          </article>
-
-          <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Intaglio Sandpaper Aquatint: Lady Justice — view larger">
-              <img src="images/Print/014_Aquatint_Justice.PNG" alt="Intaglio Sandpaper Aquatint: Lady Justice" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </a>
-            <div class="gallery-caption">
-              <p class="gallery-caption-title">Intaglio Sandpaper Aquatint: Lady Justice</p>
-              <p class="gallery-caption-medium">Intaglio</p>
-            </div>
-          </article>
-
-          <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Linocut Chrysanthemum — view larger">
-              <img src="images/Print/015_Linocut_Chrysanthemum.JPG" alt="Linocut Chrysanthemum" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </a>
-            <div class="gallery-caption">
-              <p class="gallery-caption-title">Linocut Chrysanthemum</p>
+              <p class="gallery-caption-title" hidden>Chrysanthemum</p>
               <p class="gallery-caption-medium">Linocut</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="White Line Woodcut: Provincetown — view larger">
-              <img src="images/Print/016_Whiteline_Provincetown.PNG" alt="White Line Woodcut: Provincetown" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Untitled — view larger">
+              <img src="images/Print/019_Monotype_Stencil.JPG" alt="Untitled" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">White Line Woodcut: Provincetown</p>
+              <p class="gallery-caption-title" hidden>Untitled</p>
+              <p class="gallery-caption-medium">Monotype Stencil</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Provincetown — view larger">
+              <img src="images/Print/020_Whiteline_Provincetown.PNG" alt="Provincetown" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title" hidden>Provincetown</p>
               <p class="gallery-caption-medium">White Line Woodcut</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="White Line Woodcut: Cape Cod Sunset — view larger">
-              <img src="images/Print/017_WhiteLine_Sunset.jpg" alt="White Line Woodcut: Cape Cod Sunset" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Cape Cod Sunset — view larger">
+              <img src="images/Print/021_WhiteLine_Sunset.jpg" alt="Cape Cod Sunset" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">White Line Woodcut: Cape Cod Sunset</p>
+              <p class="gallery-caption-title" hidden>Cape Cod Sunset</p>
               <p class="gallery-caption-medium">White Line Woodcut</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Monotype Stencil Color Print — view larger">
-              <img src="images/Print/018_Monotype_Stencil.JPG" alt="Monotype Stencil Color Print" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Long Road Ahead — view larger">
+              <img src="images/Print/022_Woodcut_Drive.jpg" alt="Long Road Ahead" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Monotype Stencil Color Print</p>
-              <p class="gallery-caption-medium">Monotype</p>
-            </div>
-          </article>
-
-          <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Aquatint: Goya’s Bulls — view larger">
-              <img src="images/Print/019_Aquatint_Bulls.jpg" alt="Aquatint: Goya’s Bulls" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </a>
-            <div class="gallery-caption">
-              <p class="gallery-caption-title">Aquatint: Goya’s Bulls</p>
-              <p class="gallery-caption-medium">Aquatint</p>
-            </div>
-          </article>
-
-          <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Aquatint Flower — view larger">
-              <img src="images/Print/020_Aquatint_Flower.jpg" alt="Aquatint Flower" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </a>
-            <div class="gallery-caption">
-              <p class="gallery-caption-title">Aquatint Flower</p>
-              <p class="gallery-caption-medium">Aquatint</p>
-            </div>
-          </article>
-
-          <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Woodcut: Long Road Ahead — view larger">
-              <img src="images/Print/021_Woodcut_Drive.jpg" alt="Woodcut: Long Road Ahead" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </a>
-            <div class="gallery-caption">
-              <p class="gallery-caption-title">Woodcut: Long Road Ahead</p>
+              <p class="gallery-caption-title" hidden>Long Road Ahead</p>
               <p class="gallery-caption-medium">Woodcut</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Woodcut: Self Portrait — view larger">
-              <img src="images/Print/022_Woodcut_Hand.PNG" alt="Woodcut: Self Portrait" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Self Portrait — view larger">
+              <img src="images/Print/023_Woodcut_Hand.PNG" alt="Self Portrait" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Woodcut: Self Portrait</p>
+              <p class="gallery-caption-title" hidden>Self Portrait</p>
               <p class="gallery-caption-medium">Woodcut</p>
             </div>
           </article>
 
           <article class="gallery-item">
-            <a href="#" class="gallery-item-img gph-sq" aria-label="Collograph: Sweetness — view larger">
-              <img src="images/Print/023_Collograph.jpg" alt="Collograph: Sweetness" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Sweetness — view larger">
+              <img src="images/Print/024_Collograph.jpg" alt="Sweetness" style="width:100%;height:100%;object-fit:cover;display:block;">
             </a>
             <div class="gallery-caption">
-              <p class="gallery-caption-title">Collograph: Sweetness</p>
+              <p class="gallery-caption-title" hidden>Sweetness</p>
               <p class="gallery-caption-medium">Collograph</p>
             </div>
           </article>
@@ -462,6 +475,7 @@
         items.push({
           title: title,
           desc: descEl ? descEl.textContent.trim() : '',
+          link: el.dataset.lbLink || null,
           src: img ? img.getAttribute('src') : null
         });
 
@@ -490,7 +504,11 @@
       function render() {
         var item = items[current];
         lbTitle.textContent = item.title;
-        lbDesc.textContent  = item.desc;
+        if (item.link) {
+          lbDesc.innerHTML = (item.desc ? item.desc + '<br><br>' : '') + '<a href="' + item.link + '" class="art-lb-link">View project &rarr;</a>';
+        } else {
+          lbDesc.textContent = item.desc;
+        }
         lbCount.textContent = (current + 1) + ' / ' + items.length;
         if (item.src) {
           lbImg.src = item.src; lbImg.alt = item.title;
