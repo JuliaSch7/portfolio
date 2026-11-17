@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Print work by Julia Schirrmeister — risograph, letterpress, screen printing, and printed matter.">
+  <title>Print — Julia Schirrmeister</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Gallery hover title ── */
+    .gallery-item-img { position: relative; overflow: hidden; cursor: pointer; }
+    .gallery-item-hover {
+      position: absolute; inset: 0;
+      display: flex; align-items: flex-end;
+      padding: 1rem 1.25rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.28s ease; pointer-events: none;
+    }
+    .gallery-item-hover span {
+      color: #fff; font-family: var(--font-display);
+      font-size: 0.875rem; font-weight: 600; letter-spacing: 0.01em;
+    }
+    .gallery-item-img:hover .gallery-item-hover { opacity: 1; }
+    .gallery-caption-medium { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .gallery-caption-year   { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* ── Lightbox ── */
+    .art-lb {
+      position: fixed; inset: 0; z-index: 9000;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem 5rem;
+    }
+    .art-lb[hidden] { display: none; }
+    .art-lb-close {
+      position: absolute; top: 1.25rem; right: 1.25rem;
+      background: none; border: none; cursor: pointer;
+      color: var(--text); padding: 0.5rem; opacity: 0.45;
+      transition: opacity 0.2s; line-height: 1;
+    }
+    .art-lb-close:hover { opacity: 1; }
+    .art-lb-prev, .art-lb-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer;
+      color: var(--text); padding: 1rem; opacity: 0.3;
+      transition: opacity 0.2s; line-height: 1;
+    }
+    .art-lb-prev:hover, .art-lb-next:hover { opacity: 1; }
+    .art-lb-prev { left: 0.75rem; }
+    .art-lb-next { right: 0.75rem; }
+    .art-lb-body {
+      display: flex; gap: 3.5rem; align-items: center;
+      max-width: 1120px; width: 100%;
+    }
+    .art-lb-media { flex: 1.5; min-width: 0; }
+    .art-lb-img {
+      width: 100%; height: auto; max-height: 74vh;
+      object-fit: contain; display: block; border-radius: 6px;
+    }
+    .art-lb-ph {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--bg-alt); border: 1px dashed var(--border);
+      border-radius: 6px; display: flex; align-items: center;
+      justify-content: center; color: var(--text-muted); font-size: 0.875rem;
+    }
+    .art-lb-meta { flex: 1; min-width: 0; }
+    .art-lb-counter {
+      font-size: 0.7rem; letter-spacing: 0.14em;
+      text-transform: uppercase; opacity: 0.38; margin-bottom: 1.25rem;
+    }
+    .art-lb-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 700; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .art-lb-desc {
+      font-size: 0.9375rem; line-height: 1.78;
+      color: var(--text-muted); margin: 0;
+    }
+    @media (max-width: 760px) {
+      .art-lb { padding: 4rem 1.25rem 2rem; align-items: flex-start; justify-content: flex-start; overflow-y: auto; }
+      .art-lb-body { flex-direction: column; gap: 1.5rem; }
+      .art-lb-prev { left: 0; } .art-lb-next { right: 0; }
+    }
+  </style>
+  <script>
+    (function(){var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(t===null&&d))document.documentElement.setAttribute('data-theme','dark');})();
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <div class="container nav-inner">
+        <a href="index.html" class="nav-brand" aria-label="Julia Schirrmeister — Home">Julia Schirrmeister</a>
+        <div class="nav-right">
+          <ul class="nav-links" id="nav-links" role="list">
+            <li class="nav-dropdown" role="none">
+              <button class="nav-dropdown-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="works-dropdown">
+                Works
+                <svg class="dropdown-chevron" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <ul class="nav-dropdown-menu" id="works-dropdown" role="listbox" data-open="false">
+                <li role="none"><a href="projects/patient-portal.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">01</span>Healthcare UX/UI</a></li>
+                <li role="none"><a href="projects/sva-film-logo.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">02</span>Logo/Identity</a></li>
+                <li role="none"><a href="projects/thesis-book.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">03</span>Editorial Book</a></li>
+                <li role="none"><a href="projects/capstone-zine.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">04</span>Print/Editorial</a></li>
+                <li role="none"><a href="projects/poster-series.html" class="nav-dropdown-item" role="option"><span class="nav-dropdown-item-num">05</span>Branding</a></li>
+              </ul>
+            </li>
+            <li role="none"><a href="about.html" class="nav-link">About</a></li>
+            <li role="none"><a href="art.html" class="nav-link">Gallery</a></li>
+            <li role="none"><a href="print.html" class="nav-link active" aria-current="page">Print</a></li>
+          </ul>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode" title="Toggle dark mode">
+            <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===================== MAIN ===================== -->
+  <main id="main-content" class="page-content">
+
+    <!-- PRINT HERO -->
+    <section class="art-hero" aria-labelledby="print-heading" style="padding-top:5.5rem;padding-bottom:1.5rem;border-bottom:none;">
+      <div class="container">
+        <h1 class="art-hero-title" id="print-heading">Print</h1>
+        <p class="art-hero-sub">
+          Printmaking Practice including Risographs, Risograph Animations, screenprints, intaglio prints, including aquatint, sandpaper aquatint, sugar lift mezzotint, Monotype, Chine Collé, Collographs, Carborundum, Linocut, white line woodcuts, and woodblock prints
+        </p>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section aria-label="Print gallery">
+      <div class="container">
+        <div class="gallery-grid" style="padding-top:1.5rem;">
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Risograph Flower Print — view larger">
+              <img src="images/Print/01_Riso_flower.jpeg" alt="Risograph Flower Print" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Risograph Flower Print</p>
+              <p class="gallery-caption-medium">Risograph</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Risograph Landscape Print — view larger">
+              <img src="images/Print/02_Riso_RockSalt.jpg" alt="Risograph Landscape Print" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Risograph Landscape Print</p>
+              <p class="gallery-caption-medium">Risograph</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Crone Cyclone Riso Animation — view larger">
+              <img src="images/Print/03_RisoAnimation_CroneCyclone.gif" alt="Crone Cyclone Riso Animation" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Crone Cyclone Riso Animation</p>
+              <p class="gallery-caption-medium">Risograph Animation</p>
+              <p class="gallery-caption-desc" hidden>An exploration into the perception and construction of the word "crone" by reconfiguring and creating new word associations based on popular phrases, metaphors, and proverbs. This work aims to reveal the negative perception through which society views older women and how older women are often pigeonholed into two categories: cruel crone or a gentle granny.</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Sailor Moon Riso Animation — view larger">
+              <img src="images/Print/04_RisoAnimation_SailorMoon.gif" alt="Sailor Moon Riso Animation" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Sailor Moon Riso Animation</p>
+              <p class="gallery-caption-medium">Risograph Animation</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Notorious RGB RBG Riso — view larger">
+              <img src="images/Print/05_Riso_RBG.jpg" alt="Notorious RGB RBG Riso" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Notorious RGB RBG Riso</p>
+              <p class="gallery-caption-medium">Risograph</p>
+              <p class="gallery-caption-desc" hidden>This design response, "Notorious RGB RBG, Riso", distorts the image and words of Ruth Bader Ginsburg, unraveling the veneer of the ‘Cult of Personality’ that elevates her into an untouchable icon. The work probes the tension between reverence and reality through layered riso visuals and warped text, excerpts from some of her most famous quotes, exposing the dangers of flattening a complex figure into a saintly caricature. It questions how society constructs—and risks losing—the humanity behind the myth.</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Crone Abstractions — view larger">
+              <img src="images/Print/06_Riso_Women.jpg" alt="Crone Abstractions" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Crone Abstractions</p>
+              <p class="gallery-caption-medium">Risograph</p>
+              <p class="gallery-caption-desc" hidden>These scans were further altered and abstracted, marked by rippling, wave-like distortions that further fragment the visual plane. Building on the deconstruction of Ruth Bader Ginsburg’s image, this progression strips away familiar iconography to challenge the viewer’s perception of identity and mythology. By employing riso printing, scanning, and digital distortion, the series defamiliarizes static representations, inviting a reimagining and redefinition of the Crone as a fluid, multifaceted figure that defies societal constraints and expectations.</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Screenprint: Crossroads — view larger">
+              <img src="images/Print/07_Screenprint.jpg" alt="Screenprint: Crossroads" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Screenprint: Crossroads</p>
+              <p class="gallery-caption-medium">Screenprint</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Monotype — view larger">
+              <img src="images/Print/08_Monotype_Flower.jpg" alt="Monotype" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Monotype</p>
+              <p class="gallery-caption-medium">Monotype</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Carborundum with Chine Collé — view larger">
+              <img src="images/Print/09_Caborundum_ChineColle.jpg" alt="Carborundum with Chine Collé" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Carborundum with Chine Collé</p>
+              <p class="gallery-caption-medium">Carborundum, Chine-Collé</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Carborundum Print I — view larger">
+              <img src="images/Print/010_Carborundum_01.jpg" alt="Carborundum Print I" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Carborundum Print I</p>
+              <p class="gallery-caption-medium">Carborundum</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Carborundum Print II — view larger">
+              <img src="images/Print/011_Carborundum_02.jpg" alt="Carborundum Print II" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Carborundum Print II</p>
+              <p class="gallery-caption-medium">Carborundum</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Sugar-Lift Aquatint — view larger">
+              <img src="images/Print/012_SugarLiftAquatint.JPG" alt="Sugar-Lift Aquatint" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Sugar-Lift Aquatint</p>
+              <p class="gallery-caption-medium">Aquatint</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Carborundum Print III — view larger">
+              <img src="images/Print/013_Carborundum_03.jpg" alt="Carborundum Print III" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Carborundum Print III</p>
+              <p class="gallery-caption-medium">Carborundum</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Intaglio Sandpaper Aquatint: Lady Justice — view larger">
+              <img src="images/Print/014_Aquatint_Justice.PNG" alt="Intaglio Sandpaper Aquatint: Lady Justice" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Intaglio Sandpaper Aquatint: Lady Justice</p>
+              <p class="gallery-caption-medium">Intaglio</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Linocut Chrysanthemum — view larger">
+              <img src="images/Print/015_Linocut_Chrysanthemum.JPG" alt="Linocut Chrysanthemum" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Linocut Chrysanthemum</p>
+              <p class="gallery-caption-medium">Linocut</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="White Line Woodcut: Provincetown — view larger">
+              <img src="images/Print/016_Whiteline_Provincetown.PNG" alt="White Line Woodcut: Provincetown" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">White Line Woodcut: Provincetown</p>
+              <p class="gallery-caption-medium">White Line Woodcut</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="White Line Woodcut: Cape Cod Sunset — view larger">
+              <img src="images/Print/017_WhiteLine_Sunset.jpg" alt="White Line Woodcut: Cape Cod Sunset" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">White Line Woodcut: Cape Cod Sunset</p>
+              <p class="gallery-caption-medium">White Line Woodcut</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Monotype Stencil Color Print — view larger">
+              <img src="images/Print/018_Monotype_Stencil.JPG" alt="Monotype Stencil Color Print" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Monotype Stencil Color Print</p>
+              <p class="gallery-caption-medium">Monotype</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Aquatint: Goya’s Bulls — view larger">
+              <img src="images/Print/019_Aquatint_Bulls.jpg" alt="Aquatint: Goya’s Bulls" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Aquatint: Goya’s Bulls</p>
+              <p class="gallery-caption-medium">Aquatint</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Aquatint Flower — view larger">
+              <img src="images/Print/020_Aquatint_Flower.jpg" alt="Aquatint Flower" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Aquatint Flower</p>
+              <p class="gallery-caption-medium">Aquatint</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Woodcut: Long Road Ahead — view larger">
+              <img src="images/Print/021_Woodcut_Drive.jpg" alt="Woodcut: Long Road Ahead" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Woodcut: Long Road Ahead</p>
+              <p class="gallery-caption-medium">Woodcut</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Woodcut: Self Portrait — view larger">
+              <img src="images/Print/022_Woodcut_Hand.PNG" alt="Woodcut: Self Portrait" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Woodcut: Self Portrait</p>
+              <p class="gallery-caption-medium">Woodcut</p>
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <a href="#" class="gallery-item-img gph-sq" aria-label="Collograph: Sweetness — view larger">
+              <img src="images/Print/023_Collograph.jpg" alt="Collograph: Sweetness" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </a>
+            <div class="gallery-caption">
+              <p class="gallery-caption-title">Collograph: Sweetness</p>
+              <p class="gallery-caption-medium">Collograph</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== LIGHTBOX ===================== -->
+  <div id="art-lb" class="art-lb" role="dialog" aria-modal="true" aria-label="Print work detail" tabindex="-1" hidden>
+    <button class="art-lb-close" aria-label="Close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <button class="art-lb-prev" aria-label="Previous">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="art-lb-next" aria-label="Next">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="art-lb-body">
+      <div class="art-lb-media">
+        <img class="art-lb-img" src="" alt="" hidden>
+        <div class="art-lb-ph">Image coming soon</div>
+      </div>
+      <div class="art-lb-meta">
+        <p class="art-lb-counter"></p>
+        <h2 class="art-lb-title"></h2>
+        <p class="art-lb-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-cta">
+        <div>
+          <h2 class="footer-headline">Let's work<br>together.</h2>
+          <p class="footer-sub">Open to full-time graphic design and UX roles in New York City. If the work resonates, reach out.</p>
+          <a href="mailto:schirrmeisterdesigns@gmail.com" class="btn btn-primary">
+            Get in Touch
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <nav class="footer-contact" aria-label="Contact and social links">
+          <a href="Julia_Schirrmeister_Resume_2026.pdf" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="View resume (opens in new tab)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Resume</a>
+          <a href="https://linkedin.com/in/julia-schirrmeister-4711a9a7" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://instagram.com/schirrmeisterdesigns" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile (opens in new tab)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Instagram
+          </a>
+          <a href="mailto:schirrmeisterdesigns@gmail.com" class="contact-link" aria-label="Send an email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            schirrmeisterdesigns@gmail.com
+          </a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© 2026 Julia Schirrmeister</span>
+        <span>Vibe Coded with Claude by Julia Schirrmeister</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      var items = [];
+
+      document.querySelectorAll('.gallery-item').forEach(function (el, i) {
+        var link = el.querySelector('.gallery-item-img');
+        var titleEl = el.querySelector('.gallery-caption-title');
+        var descEl = el.querySelector('.gallery-caption-desc');
+        var img = link ? link.querySelector('img') : null;
+        var title = titleEl ? titleEl.textContent.trim() : '';
+
+        items.push({
+          title: title,
+          desc: descEl ? descEl.textContent.trim() : '',
+          src: img ? img.getAttribute('src') : null
+        });
+
+        if (link) {
+          var hover = document.createElement('div');
+          hover.className = 'gallery-item-hover';
+          hover.innerHTML = '<span>' + title + '</span>';
+          link.appendChild(hover);
+
+          link.setAttribute('data-lb', i);
+          link.addEventListener('click', function (e) {
+            e.preventDefault();
+            open(+this.getAttribute('data-lb'));
+          });
+        }
+      });
+
+      var lb      = document.getElementById('art-lb');
+      var lbImg   = lb.querySelector('.art-lb-img');
+      var lbPh    = lb.querySelector('.art-lb-ph');
+      var lbTitle = lb.querySelector('.art-lb-title');
+      var lbDesc  = lb.querySelector('.art-lb-desc');
+      var lbCount = lb.querySelector('.art-lb-counter');
+      var current = 0;
+
+      function render() {
+        var item = items[current];
+        lbTitle.textContent = item.title;
+        lbDesc.textContent  = item.desc;
+        lbCount.textContent = (current + 1) + ' / ' + items.length;
+        if (item.src) {
+          lbImg.src = item.src; lbImg.alt = item.title;
+          lbImg.hidden = false; lbPh.style.display = 'none';
+        } else {
+          lbImg.hidden = true; lbPh.style.display = 'flex';
+        }
+      }
+
+      function open(i) { current = i; render(); lb.hidden = false; document.body.style.overflow = 'hidden'; lb.focus(); }
+      function close() { lb.hidden = true; document.body.style.overflow = ''; }
+      function prev()  { current = (current - 1 + items.length) % items.length; render(); }
+      function next()  { current = (current + 1) % items.length; render(); }
+
+      lb.querySelector('.art-lb-close').addEventListener('click', close);
+      lb.querySelector('.art-lb-prev').addEventListener('click', prev);
+      lb.querySelector('.art-lb-next').addEventListener('click', next);
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+
+      document.addEventListener('keydown', function (e) {
+        if (lb.hidden) return;
+        if (e.key === 'Escape')     close();
+        if (e.key === 'ArrowLeft')  prev();
+        if (e.key === 'ArrowRight') next();
+      });
+    })();
+  </script>
+</body>
+</html>
