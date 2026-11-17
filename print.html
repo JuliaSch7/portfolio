@@ -26,6 +26,7 @@
     .gallery-item-img:hover .gallery-item-hover { opacity: 1; }
     .gallery-caption-medium { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
     .gallery-caption-year   { font-size: 0.8rem; color: var(--text-muted); }
+    .art-lb-medium { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.25rem; margin-bottom: 1rem; }
     .art-lb-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.25rem; font-size: 0.875rem; font-weight: 600; color: var(--text); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; transition: opacity 0.2s; }
     .art-lb-link:hover { opacity: 0.6; }
 
@@ -418,6 +419,7 @@
       <div class="art-lb-meta">
         <p class="art-lb-counter"></p>
         <h2 class="art-lb-title"></h2>
+        <p class="art-lb-medium"></p>
         <p class="art-lb-desc"></p>
       </div>
     </div>
@@ -467,16 +469,18 @@
 
       document.querySelectorAll('.gallery-item').forEach(function (el, i) {
         var link = el.querySelector('.gallery-item-img');
-        var titleEl = el.querySelector('.gallery-caption-title');
-        var descEl = el.querySelector('.gallery-caption-desc');
+        var titleEl  = el.querySelector('.gallery-caption-title');
+        var mediumEl = el.querySelector('.gallery-caption-medium');
+        var descEl   = el.querySelector('.gallery-caption-desc');
         var img = link ? link.querySelector('img') : null;
         var title = titleEl ? titleEl.textContent.trim() : '';
 
         items.push({
-          title: title,
-          desc: descEl ? descEl.textContent.trim() : '',
-          link: el.dataset.lbLink || null,
-          src: img ? img.getAttribute('src') : null
+          title:  title,
+          medium: mediumEl ? mediumEl.textContent.trim() : '',
+          desc:   descEl ? descEl.textContent.trim() : '',
+          link:   el.dataset.lbLink || null,
+          src:    img ? img.getAttribute('src') : null
         });
 
         if (link) {
@@ -496,14 +500,16 @@
       var lb      = document.getElementById('art-lb');
       var lbImg   = lb.querySelector('.art-lb-img');
       var lbPh    = lb.querySelector('.art-lb-ph');
-      var lbTitle = lb.querySelector('.art-lb-title');
-      var lbDesc  = lb.querySelector('.art-lb-desc');
-      var lbCount = lb.querySelector('.art-lb-counter');
-      var current = 0;
+      var lbTitle  = lb.querySelector('.art-lb-title');
+      var lbMedium = lb.querySelector('.art-lb-medium');
+      var lbDesc   = lb.querySelector('.art-lb-desc');
+      var lbCount  = lb.querySelector('.art-lb-counter');
+      var current  = 0;
 
       function render() {
         var item = items[current];
-        lbTitle.textContent = item.title;
+        lbTitle.textContent  = item.title;
+        lbMedium.textContent = item.medium;
         if (item.link) {
           lbDesc.innerHTML = (item.desc ? item.desc + '<br><br>' : '') + '<a href="' + item.link + '" class="art-lb-link">View project &rarr;</a>';
         } else {
